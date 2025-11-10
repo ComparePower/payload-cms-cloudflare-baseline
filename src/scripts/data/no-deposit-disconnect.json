@@ -1,0 +1,90 @@
+{
+	"testimonials": [
+		{
+			"id": "no-deposit-001",
+			"customerName": "Michelle Anderson",
+			"location": "Houston, TX",
+			"testimonialText": "I was worried about the $500 deposit most companies wanted because my credit isn't perfect. ComparePower found me a no-deposit plan - saved me that upfront cost and got electricity turned on immediately. Huge relief!",
+			"date": "2025-01-04",
+			"category": "no-deposit-disconnect",
+			"benefitType": "no-deposit",
+			"depositSaved": 500,
+			"hadCreditConcerns": true,
+			"facingDisconnection": false,
+			"rating": 5,
+			"featured": true
+		},
+		{
+			"id": "no-deposit-002",
+			"customerName": "Jamal Washington",
+			"location": "Dallas, TX",
+			"testimonialText": "Got a disconnect notice and didn't know what to do. ComparePower helped me switch to a new provider with no deposit required. Service never went off - they handled the switch seamlessly. Saved me from a really bad situation.",
+			"date": "2024-12-27",
+			"category": "no-deposit-disconnect",
+			"benefitType": "both",
+			"depositSaved": 350,
+			"hadCreditConcerns": true,
+			"facingDisconnection": true,
+			"rating": 5,
+			"featured": true
+		},
+		{
+			"id": "no-deposit-003",
+			"customerName": "Rebecca Harris",
+			"location": "Austin, TX",
+			"testimonialText": "Just graduated college and my credit history is thin. Every provider wanted a huge deposit. ComparePower found options with no deposit required - I could afford to turn on my electricity without breaking the bank!",
+			"date": "2024-12-12",
+			"category": "no-deposit-disconnect",
+			"benefitType": "no-deposit",
+			"depositSaved": 450,
+			"hadCreditConcerns": true,
+			"facingDisconnection": false,
+			"rating": 5,
+			"featured": false
+		},
+		{
+			"id": "no-deposit-004",
+			"customerName": "Carlos Rivera",
+			"location": "San Antonio, TX",
+			"testimonialText": "I was days away from disconnection. ComparePower's team worked fast - found me a provider who could switch me same-day with no deposit. My lights stayed on and I avoided reconnection fees. Can't thank them enough!",
+			"date": "2024-11-25",
+			"category": "no-deposit-disconnect",
+			"benefitType": "both",
+			"depositSaved": 400,
+			"hadCreditConcerns": false,
+			"facingDisconnection": true,
+			"rating": 5,
+			"featured": true
+		},
+		{
+			"id": "no-deposit-005",
+			"customerName": "Tiffany Moore",
+			"location": "Fort Worth, TX",
+			"testimonialText": "Bad credit from medical bills made it impossible to get electricity without a $600 deposit. ComparePower found me a no-deposit plan that actually had better rates than what I was paying before. Total game-changer!",
+			"date": "2024-11-10",
+			"category": "no-deposit-disconnect",
+			"benefitType": "no-deposit",
+			"depositSaved": 600,
+			"hadCreditConcerns": true,
+			"facingDisconnection": false,
+			"rating": 5,
+			"featured": false
+		},
+		{
+			"id": "no-deposit-006",
+			"customerName": "Steven Jackson",
+			"location": "Plano, TX",
+			"testimonialText": "Facing disconnection after a job loss. ComparePower helped me switch providers before my service got cut off - no deposit, no interruption. They gave me options when I thought I had none. Grateful beyond words.",
+			"date": "2024-10-22",
+			"category": "no-deposit-disconnect",
+			"benefitType": "both",
+			"depositSaved": 475,
+			"hadCreditConcerns": false,
+			"facingDisconnection": true,
+			"rating": 5,
+			"featured": false
+		}
+	],
+	"count": 6,
+	"category": "no-deposit-disconnect"
+}

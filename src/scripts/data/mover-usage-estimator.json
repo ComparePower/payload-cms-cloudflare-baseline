@@ -1,0 +1,80 @@
+{
+	"testimonials": [
+		{
+			"id": "mover-estimator-001",
+			"customerName": "Ashley Cooper",
+			"location": "Moving to Austin, TX",
+			"testimonialText": "I was moving to Austin and had no idea what my electricity usage would be in my new apartment. The usage estimator asked about my square footage, appliances, and habits - then gave me a super accurate estimate. My first bill was within $8 of the prediction!",
+			"date": "2025-01-03",
+			"category": "mover-usage-estimator",
+			"movedTo": "Austin, TX",
+			"movedFrom": "Phoenix, AZ",
+			"estimatorAccuracy": 96,
+			"helpedChooseRightPlan": true,
+			"estimatedBillAmount": 142,
+			"rating": 5,
+			"featured": true
+		},
+		{
+			"id": "mover-estimator-002",
+			"customerName": "Marcus Thompson",
+			"location": "Moving to Dallas, TX",
+			"testimonialText": "Moving from California to Texas, I had no frame of reference for electricity costs. The usage estimator made it so easy - just answered a few questions about my home and got a realistic estimate. Helped me budget correctly from day one.",
+			"date": "2024-12-18",
+			"category": "mover-usage-estimator",
+			"movedTo": "Dallas, TX",
+			"movedFrom": "San Diego, CA",
+			"estimatorAccuracy": 92,
+			"helpedChooseRightPlan": true,
+			"estimatedBillAmount": 167,
+			"rating": 5,
+			"featured": true
+		},
+		{
+			"id": "mover-estimator-003",
+			"customerName": "Emily Watson",
+			"location": "Moving to Houston, TX",
+			"testimonialText": "First time renting my own place and I had no idea how much electricity I'd use. The estimator was incredibly helpful - asked about my square footage, whether I have central AC, my thermostat habits. The estimate was spot on!",
+			"date": "2024-12-05",
+			"category": "mover-usage-estimator",
+			"movedTo": "Houston, TX",
+			"estimatorAccuracy": 94,
+			"helpedChooseRightPlan": true,
+			"estimatedBillAmount": 128,
+			"rating": 5,
+			"featured": false
+		},
+		{
+			"id": "mover-estimator-004",
+			"customerName": "James Rodriguez",
+			"location": "Moving to San Antonio, TX",
+			"testimonialText": "I was downsizing from a house to an apartment and wasn't sure how much my usage would change. The estimator helped me right-size my plan instead of overpaying for usage I don't need. Super helpful tool!",
+			"date": "2024-11-22",
+			"category": "mover-usage-estimator",
+			"movedTo": "San Antonio, TX",
+			"movedFrom": "San Antonio, TX",
+			"estimatorAccuracy": 89,
+			"helpedChooseRightPlan": true,
+			"estimatedBillAmount": 95,
+			"rating": 4,
+			"featured": false
+		},
+		{
+			"id": "mover-estimator-005",
+			"customerName": "Rachel Kim",
+			"location": "Moving to Plano, TX",
+			"testimonialText": "Moving into a bigger house with my family, I was worried about electricity costs. The usage estimator considered everything - square footage, number of people, appliances. Gave me confidence I was choosing the right plan size. Accurate within $12!",
+			"date": "2024-11-08",
+			"category": "mover-usage-estimator",
+			"movedTo": "Plano, TX",
+			"movedFrom": "Chicago, IL",
+			"estimatorAccuracy": 95,
+			"helpedChooseRightPlan": true,
+			"estimatedBillAmount": 189,
+			"rating": 5,
+			"featured": true
+		}
+	],
+	"count": 5,
+	"category": "mover-usage-estimator"
+}

@@ -70,6 +70,9 @@ export interface Config {
     users: User;
     media: Media;
     'electricity-rates': ElectricityRate;
+    providers: Provider;
+    richTextDataInstances: RichTextDataInstance;
+    providerMetadata: ProviderMetadatum;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -80,6 +83,9 @@ export interface Config {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     'electricity-rates': ElectricityRatesSelect<false> | ElectricityRatesSelect<true>;
+    providers: ProvidersSelect<false> | ProvidersSelect<true>;
+    richTextDataInstances: RichTextDataInstancesSelect<false> | RichTextDataInstancesSelect<true>;
+    providerMetadata: ProviderMetadataSelect<false> | ProviderMetadataSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -306,7 +312,303 @@ export interface ElectricityRate {
     | null;
   updatedAt: string;
   createdAt: string;
+  deletedAt?: string | null;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "providers".
+ */
+export interface Provider {
+  id: number;
+  /**
+   * Provider title
+   */
+  title: string;
+  /**
+   * SEO-friendly slug - Never change once published!
+   */
+  slug: string;
+  /**
+   * Post status
+   */
+  status?: ('draft' | 'published') | null;
+  /**
+   * Original WordPress slug
+   */
+  wordpressSlug?: string | null;
+  seo?: {
+    /**
+     * Custom SEO title
+     */
+    title?: string | null;
+    /**
+     * SEO meta description
+     */
+    metaDescription?: string | null;
+  };
+  /**
+   * Publish date
+   */
+  publishedAt: string;
+  hero?: {
+    /**
+     * Hero heading line 1
+     */
+    headingLine1?: string | null;
+    /**
+     * Hero heading line 2
+     */
+    headingLine2?: string | null;
+    /**
+     * Hero CTA text
+     */
+    ctaText?: string | null;
+  };
+  /**
+   * Main content with rich formatting (contentBlocks will be added in Phase 2)
+   */
+  content?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  /**
+   * WordPress post ID
+   */
+  wpPostId?: number | null;
+  /**
+   * Last updated date
+   */
+  updatedDate?: string | null;
+  /**
+   * SEO target keyword
+   */
+  targetKeyword?: string | null;
+  /**
+   * WordPress author name
+   */
+  wpAuthor?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  deletedAt?: string | null;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * Reusable data values for inline blocks (phone numbers, etc.)
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "richTextDataInstances".
+ */
+export interface RichTextDataInstance {
+  id: number;
+  /**
+   * Display name (e.g., "TXU Energy Phone")
+   */
+  name: string;
+  /**
+   * Type of data being stored
+   */
+  category: 'phone' | 'email' | 'address' | 'other';
+  /**
+   * The actual value (phone number, email, etc.)
+   */
+  value: string;
+  /**
+   * User-friendly description for ARIA labels and tooltips (e.g., "TXU Energy Customer Service")
+   */
+  userFacingDescription?: string | null;
+  /**
+   * Unique identifier for programmatic lookup (e.g., "txu-phone")
+   */
+  slug?: string | null;
+  /**
+   * Associate this data with a specific provider (required for phone numbers)
+   */
+  provider?: (number | null) | ProviderMetadatum;
+  /**
+   * Original MDX component name (e.g., "FourChangePhoneNumber")
+   */
+  componentName?: string | null;
+  /**
+   * Additional metadata (optional)
+   */
+  metadata?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * Central registry for energy provider metadata from pricing API
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "providerMetadata".
+ */
+export interface ProviderMetadatum {
+  id: number;
+  /**
+   * Provider ID from pricing API (_id field)
+   */
+  cp_provider_id: string;
+  /**
+   * Provider display name
+   */
+  name: string;
+  /**
+   * Official legal name
+   */
+  legal_name?: string | null;
+  /**
+   * URL-friendly slug (auto-generated)
+   */
+  slug?: string | null;
+  /**
+   * Public Utility Commission of Texas registration number
+   */
+  puct_number?: string | null;
+  /**
+   * Provider status in our system
+   */
+  status: 'active' | 'inactive';
+  /**
+   * Customer service hours by day of week
+   */
+  operation_hours?: {
+    monday?: {
+      /**
+       * Start hour (24h)
+       */
+      start?: number | null;
+      start_min?: number | null;
+      /**
+       * End hour (24h)
+       */
+      end?: number | null;
+      end_min?: number | null;
+    };
+    tuesday?: {
+      start?: number | null;
+      start_min?: number | null;
+      end?: number | null;
+      end_min?: number | null;
+    };
+    wednesday?: {
+      start?: number | null;
+      start_min?: number | null;
+      end?: number | null;
+      end_min?: number | null;
+    };
+    thursday?: {
+      start?: number | null;
+      start_min?: number | null;
+      end?: number | null;
+      end_min?: number | null;
+    };
+    friday?: {
+      start?: number | null;
+      start_min?: number | null;
+      end?: number | null;
+      end_min?: number | null;
+    };
+    saturday?: {
+      start?: number | null;
+      start_min?: number | null;
+      end?: number | null;
+      end_min?: number | null;
+    };
+    sunday?: {
+      start?: number | null;
+      start_min?: number | null;
+      end?: number | null;
+      end_min?: number | null;
+    };
+  };
+  /**
+   * Cutoff time for same-day service activation
+   */
+  same_day_cutoff_time?: {
+    /**
+     * 24-hour format
+     */
+    hour?: number | null;
+    min?: number | null;
+  };
+  contact_sales?: {
+    phone_number?: string | null;
+  };
+  contact_support?: {
+    phone_number?: string | null;
+    email?: string | null;
+    address?: string | null;
+    url?: string | null;
+  };
+  contact_brand?: {
+    phone_number?: string | null;
+  };
+  contact_comparepower?: {
+    phone_number?: string | null;
+  };
+  /**
+   * Contact info for contract cancellation
+   */
+  contact_rescission?: {
+    phone_number?: string | null;
+    email?: string | null;
+    address?: string | null;
+    fax?: string | null;
+  };
+  contact_deposit_waiver?: {
+    phone_number?: string | null;
+  };
+  /**
+   * API configuration and feature flags
+   */
+  configuration?: {
+    api_url?: string | null;
+    has_credit_check_method?: boolean | null;
+    has_payment_method?: boolean | null;
+    compare_usage_prices?: boolean | null;
+    compare_document_links?: boolean | null;
+    compare_components?: boolean | null;
+    send_brand?: boolean | null;
+    allow_current_address?: boolean | null;
+    allow_drivers_license?: boolean | null;
+    social_security_number_required?: boolean | null;
+    saturday_not_allowed?: boolean | null;
+    hide_phone_number?: boolean | null;
+    hide_sign_up_button?: boolean | null;
+    /**
+     * Service window in days
+     */
+    window?: number | null;
+  };
+  /**
+   * Last time data was synced from API
+   */
+  api_last_synced?: string | null;
+  /**
+   * Internal notes
+   */
+  notes?: string | null;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -343,6 +645,18 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'electricity-rates';
         value: number | ElectricityRate;
+      } | null)
+    | ({
+        relationTo: 'providers';
+        value: number | Provider;
+      } | null)
+    | ({
+        relationTo: 'richTextDataInstances';
+        value: number | RichTextDataInstance;
+      } | null)
+    | ({
+        relationTo: 'providerMetadata';
+        value: number | ProviderMetadatum;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -500,7 +814,193 @@ export interface ElectricityRatesSelect<T extends boolean = true> {
       };
   updatedAt?: T;
   createdAt?: T;
+  deletedAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "providers_select".
+ */
+export interface ProvidersSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  status?: T;
+  wordpressSlug?: T;
+  seo?:
+    | T
+    | {
+        title?: T;
+        metaDescription?: T;
+      };
+  publishedAt?: T;
+  hero?:
+    | T
+    | {
+        headingLine1?: T;
+        headingLine2?: T;
+        ctaText?: T;
+      };
+  content?: T;
+  wpPostId?: T;
+  updatedDate?: T;
+  targetKeyword?: T;
+  wpAuthor?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  deletedAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "richTextDataInstances_select".
+ */
+export interface RichTextDataInstancesSelect<T extends boolean = true> {
+  name?: T;
+  category?: T;
+  value?: T;
+  userFacingDescription?: T;
+  slug?: T;
+  provider?: T;
+  componentName?: T;
+  metadata?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "providerMetadata_select".
+ */
+export interface ProviderMetadataSelect<T extends boolean = true> {
+  cp_provider_id?: T;
+  name?: T;
+  legal_name?: T;
+  slug?: T;
+  puct_number?: T;
+  status?: T;
+  operation_hours?:
+    | T
+    | {
+        monday?:
+          | T
+          | {
+              start?: T;
+              start_min?: T;
+              end?: T;
+              end_min?: T;
+            };
+        tuesday?:
+          | T
+          | {
+              start?: T;
+              start_min?: T;
+              end?: T;
+              end_min?: T;
+            };
+        wednesday?:
+          | T
+          | {
+              start?: T;
+              start_min?: T;
+              end?: T;
+              end_min?: T;
+            };
+        thursday?:
+          | T
+          | {
+              start?: T;
+              start_min?: T;
+              end?: T;
+              end_min?: T;
+            };
+        friday?:
+          | T
+          | {
+              start?: T;
+              start_min?: T;
+              end?: T;
+              end_min?: T;
+            };
+        saturday?:
+          | T
+          | {
+              start?: T;
+              start_min?: T;
+              end?: T;
+              end_min?: T;
+            };
+        sunday?:
+          | T
+          | {
+              start?: T;
+              start_min?: T;
+              end?: T;
+              end_min?: T;
+            };
+      };
+  same_day_cutoff_time?:
+    | T
+    | {
+        hour?: T;
+        min?: T;
+      };
+  contact_sales?:
+    | T
+    | {
+        phone_number?: T;
+      };
+  contact_support?:
+    | T
+    | {
+        phone_number?: T;
+        email?: T;
+        address?: T;
+        url?: T;
+      };
+  contact_brand?:
+    | T
+    | {
+        phone_number?: T;
+      };
+  contact_comparepower?:
+    | T
+    | {
+        phone_number?: T;
+      };
+  contact_rescission?:
+    | T
+    | {
+        phone_number?: T;
+        email?: T;
+        address?: T;
+        fax?: T;
+      };
+  contact_deposit_waiver?:
+    | T
+    | {
+        phone_number?: T;
+      };
+  configuration?:
+    | T
+    | {
+        api_url?: T;
+        has_credit_check_method?: T;
+        has_payment_method?: T;
+        compare_usage_prices?: T;
+        compare_document_links?: T;
+        compare_components?: T;
+        send_brand?: T;
+        allow_current_address?: T;
+        allow_drivers_license?: T;
+        social_security_number_required?: T;
+        saturday_not_allowed?: T;
+        hide_phone_number?: T;
+        hide_sign_up_button?: T;
+        window?: T;
+      };
+  api_last_synced?: T;
+  notes?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

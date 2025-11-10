@@ -1,0 +1,76 @@
+{
+	"testimonials": [
+		{
+			"id": "live-link-001",
+			"customerName": "Carlos Rodriguez",
+			"location": "Austin, TX",
+			"testimonialText": "Live Link is incredible! It connected to my smart meter and analyzed 6 months of my actual usage data. Found me a plan saving $143/month - way more accurate than guessing my kWh. The whole process took maybe 3 minutes.",
+			"date": "2025-01-08",
+			"category": "live-link-switcher",
+			"savingsAmount": 143,
+			"annualSavings": 1716,
+			"predictionAccuracy": 97,
+			"timeSaved": 45,
+			"rating": 5,
+			"featured": true
+		},
+		{
+			"id": "live-link-002",
+			"customerName": "Jessica Williams",
+			"location": "Dallas, TX",
+			"testimonialText": "I used to estimate my usage and always got it wrong. Live Link pulled my real data from my smart meter and matched me with a plan that actually fits how I use electricity. Saving $89/month now!",
+			"date": "2024-12-29",
+			"category": "live-link-switcher",
+			"savingsAmount": 89,
+			"annualSavings": 1068,
+			"predictionAccuracy": 94,
+			"timeSaved": 30,
+			"rating": 5,
+			"featured": true
+		},
+		{
+			"id": "live-link-003",
+			"customerName": "Brandon Lee",
+			"location": "Houston, TX",
+			"testimonialText": "The Live Link technology is next level. It knew exactly when I use the most electricity and found a free nights plan that's perfect for my schedule. I'm saving $127 every month!",
+			"date": "2024-12-15",
+			"category": "live-link-switcher",
+			"savingsAmount": 127,
+			"annualSavings": 1524,
+			"predictionAccuracy": 96,
+			"timeSaved": 40,
+			"rating": 5,
+			"featured": false
+		},
+		{
+			"id": "live-link-004",
+			"customerName": "Amanda Foster",
+			"location": "San Antonio, TX",
+			"testimonialText": "I was skeptical about giving access to my smart meter data, but it's totally secure and worth it. Live Link analyzed my patterns and found savings I would have never discovered on my own. $102/month saved!",
+			"date": "2024-11-20",
+			"category": "live-link-switcher",
+			"savingsAmount": 102,
+			"annualSavings": 1224,
+			"predictionAccuracy": 93,
+			"timeSaved": 35,
+			"rating": 5,
+			"featured": false
+		},
+		{
+			"id": "live-link-005",
+			"customerName": "Kevin Patel",
+			"location": "Plano, TX",
+			"testimonialText": "Live Link took all the guesswork out. Instead of me trying to figure out my average usage, it just looked at my smart meter history. The recommended plan has been perfect - exactly as predicted. Saving $118/month.",
+			"date": "2024-10-18",
+			"category": "live-link-switcher",
+			"savingsAmount": 118,
+			"annualSavings": 1416,
+			"predictionAccuracy": 98,
+			"timeSaved": 50,
+			"rating": 5,
+			"featured": false
+		}
+	],
+	"count": 5,
+	"category": "live-link-switcher"
+}

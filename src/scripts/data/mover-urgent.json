@@ -1,0 +1,76 @@
+{
+	"testimonials": [
+		{
+			"id": "mover-urgent-001",
+			"customerName": "Daniel Martinez",
+			"location": "Houston, TX",
+			"testimonialText": "I needed electricity turned on THE SAME DAY for my new apartment. Called at 10am, had power by 3pm. Absolutely saved me - I was moving in that afternoon and needed AC working in the Texas heat. ComparePower came through!",
+			"date": "2025-01-02",
+			"category": "mover-urgent",
+			"activationTime": "5 hours",
+			"sameDayService": true,
+			"moveInDate": "2025-01-02",
+			"serviceStartDate": "2025-01-02",
+			"rating": 5,
+			"featured": true
+		},
+		{
+			"id": "mover-urgent-002",
+			"customerName": "Lisa Brown",
+			"location": "Dallas, TX",
+			"testimonialText": "My move-in got pushed up last minute. I needed power in 24 hours and thought I was out of luck. ComparePower's same-day service option was a lifesaver - had electricity the next morning. Can't thank them enough!",
+			"date": "2024-12-20",
+			"category": "mover-urgent",
+			"activationTime": "18 hours",
+			"sameDayService": false,
+			"moveInDate": "2024-12-21",
+			"serviceStartDate": "2024-12-21",
+			"rating": 5,
+			"featured": true
+		},
+		{
+			"id": "mover-urgent-003",
+			"customerName": "Christopher Lee",
+			"location": "Austin, TX",
+			"testimonialText": "Emergency relocation for work - had to move across the state with 2 days notice. ComparePower expedited everything and I had power on day one in my new place. Made a stressful situation so much easier.",
+			"date": "2024-12-08",
+			"category": "mover-urgent",
+			"activationTime": "1 day",
+			"sameDayService": false,
+			"moveInDate": "2024-12-08",
+			"serviceStartDate": "2024-12-08",
+			"rating": 5,
+			"featured": false
+		},
+		{
+			"id": "mover-urgent-004",
+			"customerName": "Angela Smith",
+			"location": "San Antonio, TX",
+			"testimonialText": "Signed my lease on Friday, moving in Monday. Needed electricity fast! ComparePower's rush service got me set up over the weekend - had power waiting when I arrived Monday morning. Perfect!",
+			"date": "2024-11-18",
+			"category": "mover-urgent",
+			"activationTime": "2 days",
+			"sameDayService": false,
+			"moveInDate": "2024-11-18",
+			"serviceStartDate": "2024-11-18",
+			"rating": 5,
+			"featured": false
+		},
+		{
+			"id": "mover-urgent-005",
+			"customerName": "Kevin Foster",
+			"location": "Fort Worth, TX",
+			"testimonialText": "Lease started unexpectedly early and I was moving furniture in that day. Called ComparePower in the morning, electricity was on by early afternoon. Same-day service is no joke - they really deliver!",
+			"date": "2024-11-05",
+			"category": "mover-urgent",
+			"activationTime": "4 hours",
+			"sameDayService": true,
+			"moveInDate": "2024-11-05",
+			"serviceStartDate": "2024-11-05",
+			"rating": 5,
+			"featured": true
+		}
+	],
+	"count": 5,
+	"category": "mover-urgent"
+}
