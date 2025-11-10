@@ -69,6 +69,7 @@ export interface Config {
   collections: {
     users: User;
     media: Media;
+    'electricity-rates': ElectricityRate;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -78,6 +79,7 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
+    'electricity-rates': ElectricityRatesSelect<false> | ElectricityRatesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -158,6 +160,156 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "electricity-rates".
+ */
+export interface ElectricityRate {
+  id: number;
+  /**
+   * Page title (e.g., "Abilene Electricity Rates")
+   */
+  title: string;
+  /**
+   * URL slug (e.g., "texas/abilene-electricity-rates-energy-plans")
+   */
+  slug: string;
+  status: 'draft' | 'published';
+  /**
+   * City name (e.g., "Abilene")
+   */
+  cityName: string;
+  /**
+   * Reference to city content (e.g., "cities/abilene")
+   */
+  cityRef?: string | null;
+  /**
+   * Original WordPress slug
+   */
+  wordpressSlug?: string | null;
+  /**
+   * Original WordPress post ID
+   */
+  wpPostId?: number | null;
+  /**
+   * Original WordPress author
+   */
+  wpAuthor?: string | null;
+  publishedAt: string;
+  updatedDate?: string | null;
+  seo?: {
+    /**
+     * SEO page title (meta title)
+     */
+    title?: string | null;
+    /**
+     * SEO meta description
+     */
+    metaDescription?: string | null;
+  };
+  hero?: {
+    /**
+     * Hero heading line 1
+     */
+    headingLine1?: string | null;
+    /**
+     * Hero heading line 2
+     */
+    headingLine2?: string | null;
+    /**
+     * Call to action text
+     */
+    ctaText?: string | null;
+  };
+  /**
+   * SEO target keyword
+   */
+  targetKeyword?: string | null;
+  contentBlocks?:
+    | (
+        | {
+            content: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'richText';
+          }
+        | {
+            /**
+             * Asset Manager ID
+             */
+            assetId: string;
+            /**
+             * Image alt text
+             */
+            alt?: string | null;
+            /**
+             * Image caption
+             */
+            caption?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'assetManager';
+          }
+        | {
+            state: string;
+            city: string;
+            showUtility?: string | null;
+            showProvider?: string | null;
+            provider?: string | null;
+            utility?: string | null;
+            excludeProviders?: string | null;
+            linkPlanToPopup?: string | null;
+            textRrTable?: string | null;
+            appendTableExtras?: string | null;
+            pricingBasedOn?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'ratesTable';
+          }
+        | {
+            /**
+             * Section ID for anchoring
+             */
+            sectionId?: string | null;
+            content: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'section';
+          }
+      )[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -187,6 +339,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'electricity-rates';
+        value: number | ElectricityRate;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -267,6 +423,84 @@ export interface MediaSelect<T extends boolean = true> {
   filesize?: T;
   width?: T;
   height?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "electricity-rates_select".
+ */
+export interface ElectricityRatesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  status?: T;
+  cityName?: T;
+  cityRef?: T;
+  wordpressSlug?: T;
+  wpPostId?: T;
+  wpAuthor?: T;
+  publishedAt?: T;
+  updatedDate?: T;
+  seo?:
+    | T
+    | {
+        title?: T;
+        metaDescription?: T;
+      };
+  hero?:
+    | T
+    | {
+        headingLine1?: T;
+        headingLine2?: T;
+        ctaText?: T;
+      };
+  targetKeyword?: T;
+  contentBlocks?:
+    | T
+    | {
+        richText?:
+          | T
+          | {
+              content?: T;
+              id?: T;
+              blockName?: T;
+            };
+        assetManager?:
+          | T
+          | {
+              assetId?: T;
+              alt?: T;
+              caption?: T;
+              id?: T;
+              blockName?: T;
+            };
+        ratesTable?:
+          | T
+          | {
+              state?: T;
+              city?: T;
+              showUtility?: T;
+              showProvider?: T;
+              provider?: T;
+              utility?: T;
+              excludeProviders?: T;
+              linkPlanToPopup?: T;
+              textRrTable?: T;
+              appendTableExtras?: T;
+              pricingBasedOn?: T;
+              id?: T;
+              blockName?: T;
+            };
+        section?:
+          | T
+          | {
+              sectionId?: T;
+              content?: T;
+              id?: T;
+              blockName?: T;
+            };
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
