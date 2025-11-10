@@ -1,0 +1,217 @@
+{
+  "totalFiles": 896,
+  "totalFields": 15,
+  "fields": {
+    "draft": {
+      "type": "boolean",
+      "count": 896,
+      "examples": [
+        "false",
+        "false",
+        "false",
+        "false",
+        "false"
+      ],
+      "nullable": false,
+      "isRelationship": false,
+      "targetCollection": null
+    },
+    "cityName": {
+      "type": "string",
+      "count": 896,
+      "examples": [
+        "Houston",
+        "Texas Cities",
+        "Abbott",
+        "Abilene",
+        "Abram"
+      ],
+      "nullable": false,
+      "isRelationship": false,
+      "targetCollection": null
+    },
+    "cityRef": {
+      "type": "string",
+      "count": 868,
+      "examples": [
+        "src/data/cities/houston.json",
+        "cities/abbott",
+        "cities/abilene",
+        "cities/abram",
+        "cities/ackerly"
+      ],
+      "nullable": false,
+      "isRelationship": false,
+      "targetCollection": null
+    },
+    "seo_title": {
+      "type": "string",
+      "count": 896,
+      "examples": [
+        "'{city} Electricity Rates'",
+        "Shop By Your City in Texas &amp; Save on Energy Plans &amp; Rates",
+        "Find the Cheapest %title% | Compare Prices Instantly",
+        "Find the Cheapest %title% | Compare Prices Instantly",
+        "Find the Cheapest %title% | Compare Prices Instantly"
+      ],
+      "nullable": false,
+      "isRelationship": false,
+      "targetCollection": null
+    },
+    "cp_hero_heading_line_1": {
+      "type": "string",
+      "count": 896,
+      "examples": [
+        "'{city} Electricity Rates'",
+        "Texas Electricity",
+        "Compare electricity rates and energy plans in Abbott, Texas",
+        "Abilene Electricity Rates",
+        "Abram Electricity Rates"
+      ],
+      "nullable": false,
+      "isRelationship": false,
+      "targetCollection": null
+    },
+    "cp_hero_heading_line_2": {
+      "type": "string",
+      "count": 896,
+      "examples": [
+        "'Compare cheap electricity rates in {city}.'",
+        "'Compare the Best Texas electricity providers, plans and rates near you.'",
+        "Abbott Electricity Rates",
+        ">-\n  Instantly compare competing electricity company rates and energy plans in\n  Abilene, Texas.",
+        ">-\n  Instantly compare competing electricity company rates and energy plans in\n  Abram, Texas."
+      ],
+      "nullable": false,
+      "isRelationship": false,
+      "targetCollection": null
+    },
+    "title": {
+      "type": "string",
+      "count": 895,
+      "examples": [
+        "Texas Electricity",
+        "Abbott Electricity Rates",
+        "Abilene Electricity Rates",
+        "Abram Electricity Rates",
+        "Ackerly Electricity Rates"
+      ],
+      "nullable": false,
+      "isRelationship": false,
+      "targetCollection": null
+    },
+    "wp_slug": {
+      "type": "string",
+      "count": 895,
+      "examples": [
+        "texas-cities",
+        "abbott-electricity-rates-energy-plans",
+        "abilene-electricity-rates-energy-plans",
+        "abram-electricity-rates-energy-plans",
+        "ackerly-electricity-rates-energy-plans"
+      ],
+      "nullable": false,
+      "isRelationship": false,
+      "targetCollection": null
+    },
+    "wp_post_id": {
+      "type": "number",
+      "count": 895,
+      "examples": [
+        "35213",
+        "25154",
+        "16982",
+        "25142",
+        "25079"
+      ],
+      "nullable": false,
+      "isRelationship": false,
+      "targetCollection": null
+    },
+    "seo_meta_desc": {
+      "type": "string",
+      "count": 895,
+      "examples": [
+        ">-\n  Looking to compare electricity providers, plans, and rates in your city in\n  Texas? Instantly see rates, energy plans, and electric providers near you in\n  Texas.",
+        ">-\n  Moving? | Switching? | Compare Official Rates for competing energy companies\n  in Abbott, Texas. Not all plans are equal. This free consumer service helps\n  you cut through hidden fees & confusing ads to quickly discover the best\n  energy plan for your home or business. No-deposit energy plans & same day\n  power available.",
+        ">-\n  Moving? | Switching? | Compare Official Rates for competing energy companies\n  in Abilene, Texas. Not all plans are equal. This free consumer service helps\n  you cut through hidden fees & confusing ads to quickly discover the best\n  energy plan for your home or business. No-deposit energy plans & same day\n  power available.",
+        ">-\n  Moving? | Switching? | Compare Official Rates for competing energy companies\n  in Abram, Texas. Not all plans are equal. This free consumer service helps you\n  cut through hidden fees & confusing ads to quickly discover the best energy\n  plan for your home or business. No-deposit energy plans & same day power\n  available.",
+        ">-\n  Moving? | Switching? | Compare Official Rates for competing energy companies\n  in Ackerly, Texas. Not all plans are equal. This free consumer service helps\n  you cut through hidden fees & confusing ads to quickly discover the best\n  energy plan for your home or business. No-deposit energy plans & same day\n  power available."
+      ],
+      "nullable": false,
+      "isRelationship": false,
+      "targetCollection": null
+    },
+    "target_keyword": {
+      "type": "string",
+      "count": 895,
+      "examples": [
+        "texas electricity",
+        "Abbott",
+        "Abilene",
+        "Abram Electricity Rates",
+        "Ackerly Electricity Rates"
+      ],
+      "nullable": false,
+      "isRelationship": false,
+      "targetCollection": null
+    },
+    "pubDate": {
+      "type": "date",
+      "count": 895,
+      "examples": [
+        "2019-12-13T00:00:00.000Z",
+        "2018-03-27",
+        "2018-03-06T00:00:00.000Z",
+        "2018-03-07T00:00:00.000Z",
+        "2018-03-16T00:00:00.000Z"
+      ],
+      "nullable": false,
+      "isRelationship": false,
+      "targetCollection": null
+    },
+    "updatedDate": {
+      "type": "date",
+      "count": 895,
+      "examples": [
+        "2023-02-23T00:00:00.000Z",
+        "2024-05-22",
+        "2025-01-08T00:00:00.000Z",
+        "2023-01-03T00:00:00.000Z",
+        "2023-01-03T00:00:00.000Z"
+      ],
+      "nullable": false,
+      "isRelationship": false,
+      "targetCollection": null
+    },
+    "wp_author": {
+      "type": "string",
+      "count": 895,
+      "examples": [
+        "graham",
+        "enri",
+        "graham",
+        "graham",
+        "graham"
+      ],
+      "nullable": false,
+      "isRelationship": false,
+      "targetCollection": null
+    },
+    "cp_hero_cta_text": {
+      "type": "string",
+      "count": 894,
+      "examples": [
+        "'Get started with your zip code:'",
+        "'Enter your zip code to start:'",
+        "'Enter your zip code to start:'",
+        "'Enter your zip code to start:'",
+        "'Enter your zip code to start:'"
+      ],
+      "nullable": false,
+      "isRelationship": false,
+      "targetCollection": null
+    }
+  },
+  "relationships": {}
+}

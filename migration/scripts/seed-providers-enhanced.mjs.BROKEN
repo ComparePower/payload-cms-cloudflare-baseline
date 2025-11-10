@@ -1,0 +1,308 @@
+#!/usr/bin/env node
+/**
+ * Enhanced Provider Migration Script
+ *
+ * Tasks: T022-T024
+ *
+ * Migrates all provider MDX files to Payload CMS using:
+ * - New MDX parser (mdx-parser.ts)
+ * - Provider field mapper (provider-field-mapper.ts)
+ * - MDX to Lexical converter (mdx-to-lexical-converter.ts)
+ * - Rich text data slug resolver (resolve-rich-text-data-slugs.ts)
+ *
+ * Features:
+ * - Error collection (don't stop on first failure)
+ * - Progress reporting (every 10 records)
+ * - Detailed logging with timestamps
+ * - Failed records saved to migration/PROVIDER-FAILURES.md
+ *
+ * Run:
+ *   ./scripts/doppler-run.sh dev pnpm tsx migration/scripts/seed-providers-enhanced.mjs
+ *   ./scripts/doppler-run.sh dev pnpm tsx migration/scripts/seed-providers-enhanced.mjs --skip-purge
+ *   ./scripts/doppler-run.sh dev pnpm tsx migration/scripts/seed-providers-enhanced.mjs --dry-run
+ */
+
+import fs from 'fs/promises'
+import path from 'path'
+import { fileURLToPath } from 'url'
+import { getPayload } from 'payload'
+import config from '../../src/payload.config.ts'
+import { parseMdxFile } from '../../scripts/migration/lib/mdx-parser.ts'
+import { mapProviderFields } from '../../scripts/migration/lib/provider-field-mapper.ts'
+import { convertMdxToLexical } from '../../scripts/migration/lib/mdx-to-lexical-converter.ts'
+import { resolveRichTextDataSlugs } from '../../scripts/migration/lib/resolve-rich-text-data-slugs.ts'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const ASTRO_PROVIDERS_DIR =
+  '/Users/brad/_CODE_DEV_PROJECTS/cp-content-site-astro/src/content/front-end/providers'
+const FAILURES_FILE = path.join(__dirname, '../PROVIDER-FAILURES.md')
+
+// Parse command line args
+const args = process.argv.slice(2)
+const DRY_RUN = args.includes('--dry-run')
+const SKIP_PURGE = args.includes('--skip-purge')
+
+/**
+ * Find all provider MDX files recursively
+ */
+async function findProviderFiles(dir, files = []) {
+  const entries = await fs.readdir(dir, { withFileTypes: true })
+
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name)
+
+    if (entry.isDirectory()) {
+      await findProviderFiles(fullPath, files)
+    } else if (entry.isFile() && entry.name === 'index.mdx') {
+      files.push(fullPath)
+    }
+  }
+
+  return files
+}
+
+/**
+ * Format elapsed time
+ */
+function formatElapsed(ms) {
+  const seconds = Math.floor(ms / 1000)
+  const minutes = Math.floor(seconds / 60)
+  const secs = seconds % 60
+
+  if (minutes > 0) {
+    return `${minutes}m ${secs}s`
+  }
+  return `${secs}s`
+}
+
+/**
+ * Main seeding function
+ */
+async function seed() {
+  const startTime = Date.now()
+
+  console.log('🌱 Enhanced Provider Migration\n')
+  console.log(`Started: ${new Date().toLocaleString()}\n`)
+
+  if (DRY_RUN) {
+    console.log('🔬 DRY RUN MODE - No actual changes will be made\n')
+  }
+
+  // Find all provider files
+  console.log('📁 Finding provider MDX files...')
+  const providerFiles = await findProviderFiles(ASTRO_PROVIDERS_DIR)
+  console.log(`   ✓ Found ${providerFiles.length} provider files\n`)
+
+  // Initialize Payload
+  console.log('🔌 Initializing Payload...')
+  const payload = await getPayload({ config })
+  console.log('   ✓ Payload initialized\n')
+
+  try {
+    // Purge existing providers
+    if (!SKIP_PURGE) {
+      console.log('🗑️  Purging existing providers...')
+
+      if (DRY_RUN) {
+        const { totalDocs } = await payload.find({
+          collection: 'providers',
+          limit: 0,
+        })
+        console.log(`   [DRY RUN] Would delete ${totalDocs} providers\n`)
+      } else {
+        // Delete all providers using Payload API
+        const { docs } = await payload.find({
+          collection: 'providers',
+          limit: 1000,
+        })
+
+        let deleted = 0
+        for (const doc of docs) {
+          await payload.delete({
+            collection: 'providers',
+            id: doc.id,
+          })
+          deleted++
+        }
+        console.log(`   ✓ Deleted ${deleted} providers\n`)
+      }
+    } else {
+      console.log('⏭️  Skipping purge (--skip-purge flag)\n')
+    }
+
+    // Process providers
+    console.log(`📥 Processing ${providerFiles.length} providers...\n`)
+
+    const results = {
+      total: providerFiles.length,
+      created: 0,
+      failed: 0,
+      errors: [],
+      startTime,
+    }
+
+    if (DRY_RUN) {
+      console.log('   [DRY RUN] Would process all providers\n')
+      results.created = providerFiles.length
+    } else {
+      // Process each provider
+      for (let i = 0; i < providerFiles.length; i++) {
+        const file = providerFiles[i]
+        const fileName = path.relative(ASTRO_PROVIDERS_DIR, file)
+        const progress = `[${i + 1}/${providerFiles.length}]`
+
+        try {
+          // Step 1: Parse MDX
+          const parsed = await parseMdxFile(file)
+          if (parsed.errors.length > 0) {
+            throw new Error(`Parse errors: ${parsed.errors.join(', ')}`)
+          }
+
+          // Step 2: Map frontmatter to Payload fields
+          const mapped = await mapProviderFields(parsed.frontmatter, file, ASTRO_PROVIDERS_DIR)
+
+          // Step 3: Convert content to Lexical
+          const lexical = await convertMdxToLexical(parsed.content)
+
+          // Step 4: Resolve inline block slugs
+          const resolved = await resolveRichTextDataSlugs(lexical, payload)
+
+          // Step 5: Build contentBlocks
+          const data = {
+            ...mapped,
+            contentBlocks: [
+              {
+                blockType: 'richText',
+                content: resolved,
+              },
+            ],
+          }
+
+          // Truncate SEO meta description to 160 chars max
+          if (data.seo?.metaDescription && data.seo.metaDescription.length > 160) {
+            data.seo.metaDescription = data.seo.metaDescription.substring(0, 157) + '...'
+          }
+
+          // Create using Payload API
+          const created = await payload.create({
+            collection: 'providers',
+            data,
+          })
+
+          results.created++
+
+          // Progress reporting every 10 records
+          if (results.created % 10 === 0 || results.created === providerFiles.length) {
+            const elapsed = Date.now() - startTime
+            const avgTime = elapsed / results.created
+            const remaining = (providerFiles.length - results.created) * avgTime
+            const eta = formatElapsed(remaining)
+
+            console.log(
+              `   ${progress} ✓ ${mapped.title} (${formatElapsed(elapsed)} elapsed, ~${eta} remaining)`
+            )
+          }
+        } catch (error) {
+          console.error(`   ${progress} ❌ Failed: ${fileName}`)
+          console.error(`      Error: ${error.message}`)
+
+          results.failed++
+          results.errors.push({
+            file: fileName,
+            error: error.message,
+            stack: error.stack,
+          })
+        }
+      }
+    }
+
+    console.log('\n✅ Migration complete!\n')
+
+    // Verify
+    if (!DRY_RUN) {
+      console.log('🔍 Verifying...')
+      const { totalDocs } = await payload.find({
+        collection: 'providers',
+        limit: 0,
+      })
+      console.log(`   Total providers in database: ${totalDocs}`)
+      console.log(`   Expected: ${results.created}`)
+
+      if (totalDocs === results.created) {
+        console.log('   ✅ Verification passed!\n')
+      } else {
+        console.warn(`   ⚠️  Count mismatch!`)
+        console.warn(`   Database has ${totalDocs}, expected ${results.created}\n`)
+      }
+    }
+
+    // Summary
+    const totalElapsed = Date.now() - startTime
+    const successRate = ((results.created / results.total) * 100).toFixed(1)
+
+    console.log('📊 Summary:')
+    console.log(`   Total: ${results.total}`)
+    console.log(`   Created: ${results.created}`)
+    console.log(`   Failed: ${results.failed}`)
+    console.log(`   Success Rate: ${successRate}%`)
+    console.log(`   Total Time: ${formatElapsed(totalElapsed)}`)
+    console.log()
+
+    // Save failed migrations
+    if (results.errors.length > 0) {
+      console.log(`❌ Failed Migrations (${results.errors.length}):`)
+      results.errors.forEach(({ file, error }) => {
+        console.log(`   - ${file}: ${error}`)
+      })
+      console.log()
+
+      // Generate failure report
+      const failureReport = `# Provider Migration Failures
+
+Generated: ${new Date().toLocaleString()}
+Total Failures: ${results.errors.length}/${results.total}
+Success Rate: ${successRate}%
+
+## Failed Providers
+
+${results.errors
+  .map(
+    ({ file, error, stack }, i) => `### ${i + 1}. ${file}
+
+**Error**: ${error}
+
+\`\`\`
+${stack}
+\`\`\`
+`
+  )
+  .join('\n')}
+
+## Next Steps
+
+1. Review each error above
+2. Fix issues in source MDX files or migration pipeline
+3. Run retry script: \`./scripts/doppler-run.sh dev node migration/scripts/retry-failed-providers.mjs\`
+`
+
+      await fs.writeFile(FAILURES_FILE, failureReport)
+      console.log(`💾 Failure report saved to: ${FAILURES_FILE}`)
+      console.log()
+    }
+  } catch (error) {
+    console.error('\n❌ Migration failed:', error.message)
+    console.error(error.stack)
+    throw error
+  }
+}
+
+// Run seeding
+seed()
+  .then(() => {
+    console.log('✅ Done!\n')
+    process.exit(0)
+  })
+  .catch((error) => {
+    console.error('\n💥 Fatal error:', error.message)
+    process.exit(1)
+  })

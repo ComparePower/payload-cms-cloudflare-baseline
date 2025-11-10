@@ -1,0 +1,86 @@
+{
+  "target": {
+    "url": "http://localhost:3001",
+    "apiSecret": "env:PAYLOAD_SECRET",
+    "database": "mongodb://localhost/payload-cms",
+    "comment": "Target Payload CMS instance - can be any instance"
+  },
+
+  "source": {
+    "astroProject": "/Users/brad/_CODE_DEV_PROJECTS/cp-content-site-astro",
+    "contentPath": "src/content/front-end/providers",
+    "componentsPath": "src/components",
+    "comment": "Source content location"
+  },
+
+  "collections": {
+    "providers": {
+      "slug": "providers",
+      "hierarchical": true,
+      "enabled": true,
+      "description": "Main provider content entries"
+    },
+    "media": {
+      "slug": "media",
+      "enabled": true,
+      "description": "Images and media files"
+    },
+    "richTextDataInstances": {
+      "slug": "richTextDataInstances",
+      "enabled": true,
+      "createDefaults": true,
+      "description": "Dynamic data instances (phone numbers, emails, etc.)"
+    },
+    "team": {
+      "slug": "team",
+      "enabled": true,
+      "createDefaults": true,
+      "description": "Team members for author/editor relationships"
+    },
+    "categories": {
+      "slug": "categories",
+      "enabled": false,
+      "description": "Content categories (if needed)"
+    }
+  },
+
+  "mode": "seed",
+  "comment_mode": "Options: 'seed' (create only), 'update' (update existing), 'upsert' (create or update)",
+
+  "options": {
+    "skipExisting": true,
+    "dryRun": false,
+    "verbose": true,
+    "batchSize": 10,
+    "trackProgress": true,
+    "generateBackup": true,
+    "comment": "Behavioral options for seeding process"
+  },
+
+  "validation": {
+    "strictMode": true,
+    "failOnErrors": true,
+    "failOnWarnings": false,
+    "comment": "Validation behavior during seeding"
+  },
+
+  "generated": {
+    "outputDir": "migration/generated",
+    "blocksDir": "migration/generated/blocks",
+    "collectionsDir": "migration/generated/collections",
+    "comment": "Where to output generated Payload config files"
+  },
+
+  "seedData": {
+    "outputDir": "migration/seed-data",
+    "mediaDir": "migration/seed-data/media",
+    "comment": "Where to output prepared seed data"
+  },
+
+  "logging": {
+    "logDir": "migration/logs",
+    "logLevel": "info",
+    "saveToFile": true,
+    "comment": "Options: 'debug', 'info', 'warn', 'error'"
+  }
+}

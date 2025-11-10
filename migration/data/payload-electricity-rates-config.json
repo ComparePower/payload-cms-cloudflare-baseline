@@ -1,0 +1,128 @@
+{
+  "slug": "electricity-rates",
+  "admin": {
+    "useAsTitle": "title"
+  },
+  "fields": [
+    {
+      "name": "draft",
+      "type": "checkbox",
+      "required": true,
+      "admin": {
+        "description": "Found in 896/896 files"
+      }
+    },
+    {
+      "name": "cityName",
+      "type": "text",
+      "required": true,
+      "admin": {
+        "description": "Found in 896/896 files"
+      }
+    },
+    {
+      "name": "cityRef",
+      "type": "text",
+      "required": false,
+      "admin": {
+        "description": "Found in 868/896 files"
+      }
+    },
+    {
+      "name": "seo_title",
+      "type": "text",
+      "required": true,
+      "admin": {
+        "description": "Found in 896/896 files"
+      }
+    },
+    {
+      "name": "cp_hero_heading_line_1",
+      "type": "text",
+      "required": true,
+      "admin": {
+        "description": "Found in 896/896 files"
+      }
+    },
+    {
+      "name": "cp_hero_heading_line_2",
+      "type": "text",
+      "required": true,
+      "admin": {
+        "description": "Found in 896/896 files"
+      }
+    },
+    {
+      "name": "title",
+      "type": "text",
+      "required": false,
+      "admin": {
+        "description": "Found in 895/896 files"
+      }
+    },
+    {
+      "name": "wp_slug",
+      "type": "text",
+      "required": false,
+      "admin": {
+        "description": "Found in 895/896 files"
+      }
+    },
+    {
+      "name": "wp_post_id",
+      "type": "number",
+      "required": false,
+      "admin": {
+        "description": "Found in 895/896 files"
+      }
+    },
+    {
+      "name": "seo_meta_desc",
+      "type": "textarea",
+      "required": false,
+      "admin": {
+        "description": "Found in 895/896 files"
+      }
+    },
+    {
+      "name": "target_keyword",
+      "type": "text",
+      "required": false,
+      "admin": {
+        "description": "Found in 895/896 files"
+      }
+    },
+    {
+      "name": "pubDate",
+      "type": "date",
+      "required": false,
+      "admin": {
+        "description": "Found in 895/896 files"
+      }
+    },
+    {
+      "name": "updatedDate",
+      "type": "date",
+      "required": false,
+      "admin": {
+        "description": "Found in 895/896 files"
+      }
+    },
+    {
+      "name": "wp_author",
+      "type": "text",
+      "required": false,
+      "admin": {
+        "description": "Found in 895/896 files"
+      }
+    },
+    {
+      "name": "cp_hero_cta_text",
+      "type": "text",
+      "required": false,
+      "admin": {
+        "description": "Found in 894/896 files"
+      }
+    }
+  ]
+}

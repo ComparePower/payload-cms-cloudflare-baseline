@@ -1,0 +1,173 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "component-catalog.schema.json",
+  "title": "Component Catalog Schema",
+  "description": "Schema for component catalog generated from MDX parsing",
+  "type": "object",
+  "required": ["metadata", "components", "statistics"],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "required": ["generatedAt", "totalFiles", "totalComponents", "uniqueComponentTypes", "executionTimeMs"],
+      "properties": {
+        "generatedAt": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}"
+        },
+        "totalFiles": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "totalComponents": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "uniqueComponentTypes": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "executionTimeMs": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "components": {
+      "type": "object",
+      "patternProperties": {
+        "^[A-Z][a-zA-Z0-9]*$": {
+          "type": "object",
+          "required": ["name", "count", "fileCount", "files", "props", "examples"],
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "count": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "fileCount": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "files": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1
+            },
+            "props": {
+              "type": "object",
+              "patternProperties": {
+                ".*": {
+                  "type": "object",
+                  "required": ["name", "frequency", "type", "examples"],
+                  "properties": {
+                    "name": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "frequency": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": ["string", "boolean", "number", "object", "array", "expression", "unknown"]
+                    },
+                    "examples": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": ["file", "value", "lineNumber"],
+                        "properties": {
+                          "file": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "value": {
+                            "type": ["string", "null"]
+                          },
+                          "lineNumber": {
+                            "type": "integer",
+                            "minimum": 0
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "examples": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["file", "props", "lineNumber"],
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "props": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": ["name", "value", "type"],
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "value": {
+                          "type": ["string", "null"]
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": ["string", "boolean", "number", "object", "array", "expression", "unknown"]
+                        }
+                      }
+                    }
+                  },
+                  "lineNumber": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              },
+              "minItems": 1
+            }
+          }
+        }
+      }
+    },
+    "statistics": {
+      "type": "object",
+      "required": ["filesWithComponents", "filesWithoutComponents", "averageComponentsPerFile", "mostUsedComponent", "mostUsedComponentCount"],
+      "properties": {
+        "filesWithComponents": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "filesWithoutComponents": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "averageComponentsPerFile": {
+          "type": "number",
+          "minimum": 0
+        },
+        "mostUsedComponent": {
+          "type": ["string", "null"]
+        },
+        "mostUsedComponentCount": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}

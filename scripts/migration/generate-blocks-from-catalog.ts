@@ -1,0 +1,307 @@
+#!/usr/bin/env node
+
+/**
+ * Generate Payload Blocks from Component Catalog
+ *
+ * Creates Payload CMS block definitions based on the actual components
+ * found in MDX files (from component catalog).
+ *
+ * Usage:
+ *   tsx scripts/migration/generate-blocks-from-catalog.ts
+ */
+
+import fs from 'fs/promises'
+import path from 'path'
+import type { ComponentCatalog } from './lib/catalog-builder'
+
+// Configuration
+const CATALOG_FILE = path.join(process.cwd(), '.migration-cache/component-catalog.json')
+const OUTPUT_FILE = path.join(process.cwd(), '.migration-cache/payload-blocks-from-catalog.ts')
+
+/**
+ * Map prop type to Payload field type
+ */
+function mapPropTypeToPayloadField(propName: string, propType: string, examples: any[]): any {
+  const type = propType.toLowerCase()
+
+  switch (type) {
+    case 'string':
+      // If it looks like longer content, use textarea
+      if (propName.toLowerCase().includes('text') ||
+          propName.toLowerCase().includes('content') ||
+          propName.toLowerCase().includes('description')) {
+        return {
+          name: propName,
+          type: 'textarea',
+          admin: {
+            description: `${propName} (string)`,
+          },
+        }
+      }
+      return {
+        name: propName,
+        type: 'text',
+        admin: {
+          description: `${propName} (string)`,
+        },
+      }
+
+    case 'number':
+      return {
+        name: propName,
+        type: 'number',
+        admin: {
+          description: `${propName} (number)`,
+        },
+      }
+
+    case 'boolean':
+      return {
+        name: propName,
+        type: 'checkbox',
+        defaultValue: false,
+        admin: {
+          description: `${propName} (boolean)`,
+        },
+      }
+
+    case 'array':
+      // Try to determine array item type from examples
+      const exampleValue = examples[0]?.value
+      if (exampleValue) {
+        try {
+          const parsed = JSON.parse(exampleValue)
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            const firstItem = parsed[0]
+            if (typeof firstItem === 'string') {
+              return {
+                name: propName,
+                type: 'array',
+                fields: [
+                  {
+                    name: 'value',
+                    type: 'text',
+                  },
+                ],
+                admin: {
+                  description: `${propName} (array of strings)`,
+                },
+              }
+            }
+          }
+        } catch (e) {
+          // If parsing fails, use JSON type
+        }
+      }
+
+      return {
+        name: propName,
+        type: 'json',
+        admin: {
+          description: `${propName} (array)`,
+        },
+      }
+
+    case 'object':
+      return {
+        name: propName,
+        type: 'json',
+        admin: {
+          description: `${propName} (object)`,
+        },
+      }
+
+    case 'expression':
+      // Expressions can be any type, use text with note
+      return {
+        name: propName,
+        type: 'text',
+        admin: {
+          description: `${propName} (dynamic expression)`,
+        },
+      }
+
+    default:
+      return {
+        name: propName,
+        type: 'text',
+        admin: {
+          description: `${propName} (${propType})`,
+        },
+      }
+  }
+}
+
+/**
+ * Convert component name to block slug (camelCase)
+ */
+function componentNameToSlug(name: string): string {
+  // First letter lowercase, rest unchanged
+  return name.charAt(0).toLowerCase() + name.slice(1)
+}
+
+/**
+ * Generate Payload block definition from component catalog entry
+ */
+function generateBlockFromComponent(componentName: string, componentData: any): any {
+  const slug = componentNameToSlug(componentName)
+  const fields: any[] = []
+
+  // Convert each prop to a Payload field
+  const props = componentData.props || {}
+  for (const [propName, propData] of Object.entries<any>(props)) {
+    const field = mapPropTypeToPayloadField(
+      propName,
+      propData.type,
+      propData.examples || []
+    )
+    fields.push(field)
+  }
+
+  // If no props, add a note field
+  if (fields.length === 0) {
+    fields.push({
+      name: 'note',
+      type: 'ui',
+      admin: {
+        components: {
+          Field: () => 'This component has no configurable properties',
+        },
+      },
+    })
+  }
+
+  return {
+    slug,
+    labels: {
+      singular: componentName,
+      plural: `${componentName}s`,
+    },
+    fields,
+    admin: {
+      description: `${componentName} component (used ${componentData.count} times in ${componentData.fileCount} files)`,
+    },
+  }
+}
+
+/**
+ * Generate TypeScript file content
+ */
+function generateTypeScriptFile(blocks: any[]): string {
+  const imports = `import type { Block } from 'payload'\n\n`
+
+  const header = `/**
+ * Payload Block Definitions Generated from Component Catalog
+ *
+ * Generated from actual component usage in MDX files
+ * Total blocks: ${blocks.length}
+ *
+ * DO NOT EDIT THIS FILE MANUALLY
+ * Regenerate with: tsx scripts/migration/generate-blocks-from-catalog.ts
+ */\n\n`
+
+  const blockDefinitions = blocks.map(block => {
+    const fieldsStr = JSON.stringify(block.fields, null, 6)
+      .split('\n')
+      .map((line, i) => i === 0 ? line : '      ' + line)
+      .join('\n')
+
+    return `  {
+    slug: '${block.slug}',
+    labels: {
+      singular: '${block.labels.singular}',
+      plural: '${block.labels.plural}',
+    },
+    fields: ${fieldsStr},
+    admin: {
+      description: '${block.admin.description}',
+    },
+  }`
+  }).join(',\n')
+
+  return `${imports}${header}export const catalogComponentBlocks: Block[] = [\n${blockDefinitions}\n]\n`
+}
+
+/**
+ * Main function
+ */
+async function main() {
+  console.log('\n🏗️  Generating Payload Blocks from Component Catalog')
+  console.log('='.repeat(60))
+
+  // Read component catalog
+  console.log(`\n📂 Reading catalog: ${CATALOG_FILE}`)
+  const catalogContent = await fs.readFile(CATALOG_FILE, 'utf-8')
+  const catalog: ComponentCatalog = JSON.parse(catalogContent)
+
+  const componentCount = Object.keys(catalog.components).length
+  console.log(`   Found ${componentCount} unique components\n`)
+
+  // Generate blocks
+  console.log('🔧 Generating block definitions...\n')
+  const blocks: any[] = []
+
+  const sortedComponents = Object.entries(catalog.components)
+    .sort(([a], [b]) => a.localeCompare(b))
+
+  for (const [componentName, componentData] of sortedComponents) {
+    const block = generateBlockFromComponent(componentName, componentData)
+    blocks.push(block)
+
+    const propCount = Object.keys(componentData.props || {}).length
+    console.log(`   ✓ ${componentName.padEnd(40)} → ${block.slug.padEnd(40)} (${propCount} props, ${componentData.count} uses)`)
+  }
+
+  // Generate statistics
+  const totalFields = blocks.reduce((sum, b) => sum + (b.fields?.length || 0), 0)
+  const blocksWithProps = blocks.filter(b => (b.fields?.length || 0) > 1).length
+  const blocksWithoutProps = blocks.filter(b => (b.fields?.length || 0) <= 1).length
+
+  console.log('\n' + '='.repeat(60))
+  console.log('📊 Generation Summary')
+  console.log('='.repeat(60))
+  console.log(`\nTotal blocks generated: ${blocks.length}`)
+  console.log(`Total fields across all blocks: ${totalFields}`)
+  console.log(`Blocks with props: ${blocksWithProps}`)
+  console.log(`Blocks without props: ${blocksWithoutProps}`)
+
+  // Generate TypeScript file
+  const tsContent = generateTypeScriptFile(blocks)
+  await fs.writeFile(OUTPUT_FILE, tsContent, 'utf-8')
+  console.log(`\n💾 Saved TypeScript file: ${OUTPUT_FILE}`)
+
+  // Also save JSON for reference
+  const jsonFile = OUTPUT_FILE.replace('.ts', '.json')
+  await fs.writeFile(jsonFile, JSON.stringify(blocks, null, 2), 'utf-8')
+  console.log(`💾 Saved JSON reference: ${jsonFile}`)
+
+  // Show top 5 most used components
+  console.log('\n📈 Top 5 Most Used Components:')
+  const topComponents = Object.entries(catalog.components)
+    .sort(([, a], [, b]) => (b as any).count - (a as any).count)
+    .slice(0, 5)
+
+  topComponents.forEach(([name, data], i) => {
+    const typedData = data as any
+    const propCount = Object.keys(typedData.props || {}).length
+    console.log(`   ${i + 1}. ${name} - ${typedData.count} uses, ${propCount} props`)
+  })
+
+  console.log('\n✅ Block generation complete!\n')
+  console.log('📝 Next steps:')
+  console.log('   1. Review generated blocks in .migration-cache/')
+  console.log('   2. Merge with existing astroComponentBlocks if needed')
+  console.log('   3. Import in Payload collections')
+  console.log('')
+}
+
+// Run if executed directly
+const isMainModule = import.meta.url === `file://${process.argv[1]}`
+if (isMainModule) {
+  main().catch((error) => {
+    console.error('\n❌ Error:', error.message)
+    process.exit(1)
+  })
+}
+
+export { generateBlockFromComponent, componentNameToSlug }

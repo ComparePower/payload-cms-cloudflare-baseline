@@ -1,0 +1,454 @@
+/**
+ * Markdown to Lexical Converter
+ *
+ * Task: T008
+ *
+ * Converts markdown content (from MDX files) to Payload Lexical JSON format.
+ * Uses unified/remark pipeline to parse markdown AST and convert to Lexical nodes.
+ *
+ * Supports:
+ * - Headings (h1-h6)
+ * - Paragraphs
+ * - Text formatting (bold, italic, strikethrough)
+ * - Lists (ordered, unordered)
+ * - Links
+ * - Blockquotes
+ * - Code blocks
+ */
+
+import { unified } from 'unified'
+import remarkParse from 'remark-parse'
+import remarkMdx from 'remark-mdx'
+import { visit } from 'unist-util-visit'
+import type { Root, Content, Paragraph, Heading, List, ListItem, Link, Text, PhrasingContent } from 'mdast'
+
+export interface LexicalNode {
+  type: string
+  version: number
+  [key: string]: any
+}
+
+export interface LexicalRoot {
+  root: LexicalNode
+}
+
+/**
+ * Convert markdown string to Lexical JSON format
+ *
+ * @param content - Markdown content string
+ * @returns Lexical JSON structure
+ *
+ * @example
+ * const markdown = `
+ * # Heading
+ *
+ * This is **bold** and *italic* text.
+ *
+ * - List item 1
+ * - List item 2
+ * `
+ *
+ * const lexical = await convertMdxToLexical(markdown)
+ */
+export async function convertMdxToLexical(content: string): Promise<LexicalRoot> {
+  // Parse markdown to AST
+  const parser = unified()
+    .use(remarkParse)
+    .use(remarkMdx)
+
+  const ast = parser.parse(content) as Root
+  const tree = await parser.run(ast)
+
+  // Convert AST nodes to Lexical format
+  const children: LexicalNode[] = []
+
+  for (const node of tree.children) {
+    const lexicalNode = convertNodeToLexical(node)
+    if (lexicalNode) {
+      if (Array.isArray(lexicalNode)) {
+        children.push(...lexicalNode)
+      } else {
+        children.push(lexicalNode)
+      }
+    }
+  }
+
+  return {
+    root: {
+      type: 'root',
+      format: '',
+      indent: 0,
+      version: 1,
+      children,
+      direction: 'ltr'
+    }
+  }
+}
+
+/**
+ * Convert a single markdown AST node to Lexical node
+ */
+function convertNodeToLexical(node: Content): LexicalNode | LexicalNode[] | null {
+  switch (node.type) {
+    case 'heading':
+      return convertHeading(node as Heading)
+
+    case 'paragraph':
+      return convertParagraph(node as Paragraph)
+
+    case 'list':
+      return convertList(node as List)
+
+    case 'blockquote':
+      return convertBlockquote(node)
+
+    case 'code':
+      return convertCodeBlock(node)
+
+    case 'thematicBreak':
+      return convertThematicBreak()
+
+    // MDX-specific nodes - preserve as text placeholders for now
+    case 'mdxJsxFlowElement':
+      return convertMdxComponent(node)
+
+    case 'mdxJsxTextElement':
+      // Inline components - return as placeholder
+      return null // Handled by inline component processor
+
+    default:
+      // console.warn(`Unknown node type: ${node.type}`)
+      return null
+  }
+}
+
+/**
+ * Convert heading to Lexical heading node
+ */
+function convertHeading(node: Heading): LexicalNode {
+  const children = convertPhrasingContent(node.children)
+
+  return {
+    type: 'heading',
+    tag: `h${node.depth}`,
+    format: '',
+    indent: 0,
+    version: 1,
+    children,
+    direction: 'ltr'
+  }
+}
+
+/**
+ * Convert paragraph to Lexical paragraph node
+ */
+function convertParagraph(node: Paragraph): LexicalNode {
+  const children = convertPhrasingContent(node.children)
+
+  // Skip empty paragraphs
+  if (children.length === 0) {
+    return {
+      type: 'paragraph',
+      format: '',
+      indent: 0,
+      version: 1,
+      children: [],
+      direction: 'ltr'
+    }
+  }
+
+  return {
+    type: 'paragraph',
+    format: '',
+    indent: 0,
+    version: 1,
+    children,
+    direction: 'ltr'
+  }
+}
+
+/**
+ * Convert list to Lexical list node
+ */
+function convertList(node: List): LexicalNode {
+  const listType = node.ordered ? 'number' : 'bullet'
+  const tag = node.ordered ? 'ol' : 'ul'
+
+  const children = node.children.map((item: ListItem) => {
+    // Each list item becomes a listitem node
+    const itemChildren: LexicalNode[] = []
+
+    for (const child of item.children) {
+      if (child.type === 'paragraph') {
+        // Extract paragraph children directly (flatten)
+        const textNodes = convertPhrasingContent((child as Paragraph).children)
+        itemChildren.push(...textNodes)
+      } else {
+        const converted = convertNodeToLexical(child)
+        if (converted) {
+          if (Array.isArray(converted)) {
+            itemChildren.push(...converted)
+          } else {
+            itemChildren.push(converted)
+          }
+        }
+      }
+    }
+
+    return {
+      type: 'listitem',
+      value: node.ordered ? (node.start || 1) : undefined,
+      format: '',
+      indent: 0,
+      version: 1,
+      children: itemChildren,
+      direction: 'ltr'
+    }
+  })
+
+  return {
+    type: 'list',
+    listType,
+    tag,
+    start: node.ordered ? (node.start || 1) : undefined,
+    format: '',
+    indent: 0,
+    version: 1,
+    children,
+    direction: 'ltr'
+  }
+}
+
+/**
+ * Convert blockquote to Lexical quote node
+ */
+function convertBlockquote(node: any): LexicalNode {
+  const children: LexicalNode[] = []
+
+  for (const child of node.children) {
+    const converted = convertNodeToLexical(child)
+    if (converted) {
+      if (Array.isArray(converted)) {
+        children.push(...converted)
+      } else {
+        children.push(converted)
+      }
+    }
+  }
+
+  return {
+    type: 'quote',
+    format: '',
+    indent: 0,
+    version: 1,
+    children,
+    direction: 'ltr'
+  }
+}
+
+/**
+ * Convert code block to Lexical code node
+ */
+function convertCodeBlock(node: any): LexicalNode {
+  return {
+    type: 'code',
+    language: node.lang || 'text',
+    format: '',
+    indent: 0,
+    version: 1,
+    children: [
+      {
+        type: 'text',
+        text: node.value || '',
+        format: 0,
+        mode: 'normal',
+        style: '',
+        detail: 0,
+        version: 1
+      }
+    ],
+    direction: 'ltr'
+  }
+}
+
+/**
+ * Convert thematic break (horizontal rule) to Lexical node
+ */
+function convertThematicBreak(): LexicalNode {
+  return {
+    type: 'horizontalrule',
+    version: 1
+  }
+}
+
+/**
+ * Convert MDX component to placeholder text
+ * (Block-level components should be handled separately)
+ */
+function convertMdxComponent(node: any): LexicalNode {
+  const componentName = node.name || 'Component'
+
+  return {
+    type: 'paragraph',
+    format: '',
+    indent: 0,
+    version: 1,
+    children: [
+      {
+        type: 'text',
+        text: `[${componentName}]`,
+        format: 0,
+        mode: 'normal',
+        style: '',
+        detail: 0,
+        version: 1
+      }
+    ],
+    direction: 'ltr'
+  }
+}
+
+/**
+ * Convert phrasing content (inline text, links, emphasis, etc.)
+ * to Lexical text nodes with formatting
+ */
+function convertPhrasingContent(nodes: PhrasingContent[]): LexicalNode[] {
+  const result: LexicalNode[] = []
+
+  for (const node of nodes) {
+    const converted = convertPhrasingNode(node)
+    if (converted) {
+      if (Array.isArray(converted)) {
+        result.push(...converted)
+      } else {
+        result.push(converted)
+      }
+    }
+  }
+
+  return result
+}
+
+/**
+ * Convert a single phrasing node to Lexical format
+ */
+function convertPhrasingNode(node: PhrasingContent): LexicalNode | LexicalNode[] | null {
+  switch (node.type) {
+    case 'text':
+      return {
+        type: 'text',
+        text: (node as Text).value,
+        format: 0,
+        mode: 'normal',
+        style: '',
+        detail: 0,
+        version: 1
+      }
+
+    case 'strong':
+      // Bold text
+      return (node.children as PhrasingContent[]).map(child => {
+        const textNode = convertPhrasingNode(child)
+        if (textNode && !Array.isArray(textNode) && textNode.type === 'text') {
+          return {
+            ...textNode,
+            format: 1 // Bold format flag
+          }
+        }
+        return textNode
+      }).flat().filter(Boolean) as LexicalNode[]
+
+    case 'emphasis':
+      // Italic text
+      return (node.children as PhrasingContent[]).map(child => {
+        const textNode = convertPhrasingNode(child)
+        if (textNode && !Array.isArray(textNode) && textNode.type === 'text') {
+          return {
+            ...textNode,
+            format: 2 // Italic format flag
+          }
+        }
+        return textNode
+      }).flat().filter(Boolean) as LexicalNode[]
+
+    case 'delete':
+      // Strikethrough text
+      return (node.children as PhrasingContent[]).map(child => {
+        const textNode = convertPhrasingNode(child)
+        if (textNode && !Array.isArray(textNode) && textNode.type === 'text') {
+          return {
+            ...textNode,
+            format: 8 // Strikethrough format flag
+          }
+        }
+        return textNode
+      }).flat().filter(Boolean) as LexicalNode[]
+
+    case 'link':
+      return convertLink(node as Link)
+
+    case 'inlineCode':
+      return {
+        type: 'text',
+        text: (node as any).value,
+        format: 16, // Code format flag
+        mode: 'normal',
+        style: '',
+        detail: 0,
+        version: 1
+      }
+
+    case 'break':
+      return {
+        type: 'linebreak',
+        version: 1
+      }
+
+    case 'mdxJsxTextElement':
+      // Inline MDX component - placeholder
+      return {
+        type: 'text',
+        text: `{{INLINE_COMPONENT:${(node as any).name}:{}}}`,
+        format: 0,
+        mode: 'normal',
+        style: '',
+        detail: 0,
+        version: 1
+      }
+
+    default:
+      // console.warn(`Unknown phrasing node type: ${node.type}`)
+      return null
+  }
+}
+
+/**
+ * Convert link to Lexical link node
+ */
+function convertLink(node: Link): LexicalNode {
+  const children = convertPhrasingContent(node.children as PhrasingContent[])
+
+  return {
+    type: 'link',
+    url: node.url,
+    title: node.title || undefined,
+    format: '',
+    indent: 0,
+    version: 1,
+    children,
+    direction: 'ltr',
+    fields: {
+      linkType: 'custom',
+      url: node.url,
+      newTab: false
+    }
+  }
+}
+
+/**
+ * Format text node with multiple formats combined
+ * (e.g., bold + italic)
+ */
+function combineFormats(...formats: number[]): number {
+  return formats.reduce((acc, format) => acc | format, 0)
+}

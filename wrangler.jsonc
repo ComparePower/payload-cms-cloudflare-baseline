@@ -19,9 +19,8 @@
     {
       "binding": "D1",
       "database_id": "6ffdd2a2-c54f-4aac-9088-30d6f2c6034f",
-      "database_name": "payload-cms-cloudflare-baseline",
-      "remote": true,
-    },
+      "database_name": "payload-cms-cloudflare-baseline"
+    }
   ],
   "services": [
     // The service should match the "name" of your worker
@@ -33,8 +32,9 @@
   "r2_buckets": [
     {
       "binding": "R2",
-      "bucket_name": "payload-cms-cloudflare-baseline","preview_bucket_name": "payload-cms-cloudflare-baseline",
-    },
+      "bucket_name": "payload-cms-cloudflare-baseline",
+      "preview_bucket_name": "payload-cms-cloudflare-baseline"
+    }
     // Create a R2 binding with the binding name "NEXT_INC_CACHE_R2_BUCKET"
     // {
     //   "binding": "NEXT_INC_CACHE_R2_BUCKET",

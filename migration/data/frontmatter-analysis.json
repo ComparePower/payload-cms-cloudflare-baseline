@@ -1,0 +1,412 @@
+{
+  "totalFiles": 157,
+  "totalFields": 17,
+  "fields": {
+    "title": {
+      "type": "string",
+      "count": 157,
+      "examples": [
+        "\"Ratings &amp; Reviews\"",
+        "\"Direct Energy vs. Constellation\"",
+        "\"Direct Energy vs. Green Mountain Energy\"",
+        "\"Direct Energy vs. Just Energy\"",
+        "\"Green Mountain Energy vs. Constellation\""
+      ],
+      "nullable": false,
+      "isRelationship": false,
+      "targetCollection": null
+    },
+    "wp_slug": {
+      "type": "string",
+      "count": 156,
+      "examples": [
+        "\"ratings\"",
+        "\"direct-energy-vs-constellation\"",
+        "\"direct-energy-vs-green-mountain-energy\"",
+        "\"direct-energy-vs-just-energy\"",
+        "\"green-mountain-energy-vs-constellation\""
+      ],
+      "nullable": false,
+      "isRelationship": false,
+      "targetCollection": null
+    },
+    "wp_post_id": {
+      "type": "number",
+      "count": 156,
+      "examples": [
+        "31303",
+        "93598",
+        "93600",
+        "93596",
+        "93554"
+      ],
+      "nullable": false,
+      "isRelationship": true,
+      "targetCollection": "unknown"
+    },
+    "seo_meta_desc": {
+      "type": "string",
+      "count": 154,
+      "examples": [
+        "\"Compare the highest rated Texas energy companies, plans, and rates. Finding your best electricity company in Texas has never been easier.\"",
+        "\"Compare Direct Energy vs. Constellation plans and rates to find the best electricity plan for your home. See pricing, reviews, and features side by side.\"",
+        "\"Compare Direct Energy vs. Green Mountain Energy plans, rates, and features for your Texas home. See current prices and find the right electricity plan today.\"",
+        "\"Compare Direct Energy vs. Just Energy plans, rates &amp; reviews from real Texans. See pricing and customer service ratings to find your perfect power match.\"",
+        "\"Looking for Green Mountain Energy vs. Constellation comparisons? Get real Texas rates, honest reviews, and see which provider fits your home's needs.\""
+      ],
+      "nullable": false,
+      "isRelationship": false,
+      "targetCollection": null
+    },
+    "draft": {
+      "type": "boolean",
+      "count": 157,
+      "examples": [
+        "true",
+        "false",
+        "false",
+        "false",
+        "false"
+      ],
+      "nullable": false,
+      "isRelationship": false,
+      "targetCollection": null
+    },
+    "pubDate": {
+      "type": "date | string",
+      "count": 157,
+      "examples": [
+        "2019-06-26",
+        "2024-10-30",
+        "2024-10-31",
+        "2024-11-07",
+        "2024-10-29"
+      ],
+      "nullable": false,
+      "isRelationship": false,
+      "targetCollection": null
+    },
+    "updatedDate": {
+      "type": "date",
+      "count": 156,
+      "examples": [
+        "2023-07-19",
+        "2024-11-08",
+        "2024-11-08",
+        "2024-11-08",
+        "2024-11-08"
+      ],
+      "nullable": false,
+      "isRelationship": false,
+      "targetCollection": null
+    },
+    "wp_author": {
+      "type": "string",
+      "count": 156,
+      "examples": [
+        "\"graham\"",
+        "\"graham\"",
+        "\"graham\"",
+        "\"graham\"",
+        "\"graham\""
+      ],
+      "nullable": false,
+      "isRelationship": false,
+      "targetCollection": null
+    },
+    "cp_hero_heading_line_1": {
+      "type": "string",
+      "count": 156,
+      "examples": [
+        "\"Texas Electricity Ratings\"",
+        "\"Direct Energy vs. Constellation\"",
+        "\"Direct Energy vs. Green Mountain Energy\"",
+        "\"Direct Energy vs. Just Energy\"",
+        "\"Green Mountain Energy vs. Constellation\""
+      ],
+      "nullable": false,
+      "isRelationship": false,
+      "targetCollection": null
+    },
+    "cp_hero_heading_line_2": {
+      "type": "string",
+      "count": 155,
+      "examples": [
+        "\"Instantly compare the best rated electricity companies in Texas.\"",
+        "\"Don't overpay for electricity. Get the inside scoop on which provider fits your home best.\"",
+        "\"Don't overpay for electricity. Get the inside scoop on which provider fits your home best.\"",
+        "\"Don't overpay for electricity. Get the inside scoop on which provider fits your home best.\"",
+        "\"Don't overpay for electricity. Get the inside scoop on which provider fits your home best.\""
+      ],
+      "nullable": false,
+      "isRelationship": false,
+      "targetCollection": null
+    },
+    "cp_hero_cta_text": {
+      "type": "string",
+      "count": 155,
+      "examples": [
+        "\"Enter your zip code to start:\"",
+        "\"Find Your Best Deal – Compare Plans &amp; Start Saving\"",
+        "\"Find Your Best Deal – Compare Plans &amp; Start Saving\"",
+        "\"Find Your Best Deal – Compare Plans &amp; Start Saving\"",
+        "\"Find Your Best Deal – Compare Plans &amp; Start Saving\""
+      ],
+      "nullable": false,
+      "isRelationship": false,
+      "targetCollection": null
+    },
+    "seo_title": {
+      "type": "string",
+      "count": 129,
+      "examples": [
+        "\"Direct Energy vs. Constellation: Compare Plans &amp; Prices %currentyear%\"",
+        "\"Direct Energy vs. Green Mountain Energy: Compare Texas Plans\"",
+        "\"Direct Energy vs. Just Energy | Power Comparison %currentyear%\"",
+        "\"Green Mountain Energy vs. Constellation | %currentyear% Comparison\"",
+        "\"Texas Electricity Provider Comparisons | Find Your Best Deal\""
+      ],
+      "nullable": false,
+      "isRelationship": false,
+      "targetCollection": null
+    },
+    "target_keyword": {
+      "type": "string",
+      "count": 93,
+      "examples": [
+        "\"direct energy vs. constellation\"",
+        "\"direct energy vs. green mountain energy\"",
+        "\"direct energy vs. just energy\"",
+        "\"green mountain energy vs. constellation\"",
+        "\"electricity provider comparisons\""
+      ],
+      "nullable": false,
+      "isRelationship": false,
+      "targetCollection": null
+    },
+    "post_author_team_member_is": {
+      "type": "array<string>",
+      "count": 1,
+      "examples": [
+        [
+          "graham-griffin"
+        ]
+      ],
+      "nullable": false,
+      "isRelationship": true,
+      "targetCollection": "team"
+    },
+    "post_editor_team_member_is": {
+      "type": "array<string>",
+      "count": 1,
+      "examples": [
+        [
+          "enri-zhulati"
+        ]
+      ],
+      "nullable": false,
+      "isRelationship": true,
+      "targetCollection": "team"
+    },
+    "post_checker_team_member_is": {
+      "type": "array<string>",
+      "count": 1,
+      "examples": [
+        [
+          "ryan-hatch"
+        ]
+      ],
+      "nullable": false,
+      "isRelationship": true,
+      "targetCollection": "team"
+    },
+    "description": {
+      "type": "string",
+      "count": 1,
+      "examples": [
+        "\"Compare all retail electricity providers in Texas\""
+      ],
+      "nullable": false,
+      "isRelationship": false,
+      "targetCollection": null
+    }
+  },
+  "relationships": {
+    "wp_post_id": {
+      "targetCollection": "unknown",
+      "isArray": false,
+      "references": [
+        "31303",
+        "93598",
+        "93600",
+        "93596",
+        "93554",
+        "94238",
+        "93557",
+        "93489",
+        "93560",
+        "93487",
+        "93563",
+        "93493",
+        "90749",
+        "31054",
+        "16469",
+        "27782",
+        "27783",
+        "27789",
+        "27784",
+        "27741",
+        "27785",
+        "27790",
+        "27742",
+        "27791",
+        "27792",
+        "89350",
+        "89740",
+        "89916",
+        "89314",
+        "89652",
+        "89556",
+        "89321",
+        "89890",
+        "89724",
+        "89794",
+        "89397",
+        "89363",
+        "89386",
+        "89328",
+        "89623",
+        "81870",
+        "16471",
+        "27569",
+        "27786",
+        "95013",
+        "15860",
+        "82347",
+        "27793",
+        "16627",
+        "27787",
+        "27788",
+        "28022",
+        "16436",
+        "27743",
+        "28023",
+        "83632",
+        "27430",
+        "28024",
+        "28025",
+        "16634",
+        "80506",
+        "16652",
+        "16244",
+        "16434",
+        "93602",
+        "93514",
+        "93588",
+        "81662",
+        "28174",
+        "16467",
+        "28175",
+        "28173",
+        "28172",
+        "27697",
+        "28171",
+        "27701",
+        "28170",
+        "28169",
+        "59928",
+        "27645",
+        "27644",
+        "28168",
+        "80611",
+        "82427",
+        "28167",
+        "82388",
+        "27643",
+        "27698",
+        "16455",
+        "28166",
+        "27589",
+        "28031",
+        "27639",
+        "28030",
+        "30280",
+        "16433",
+        "82513",
+        "80643",
+        "81350",
+        "28032",
+        "27642",
+        "27640",
+        "27699",
+        "16437",
+        "28029",
+        "27630",
+        "27554",
+        "27780",
+        "82540",
+        "27744",
+        "16607",
+        "27568",
+        "30532",
+        "16465",
+        "16473",
+        "27363",
+        "81325",
+        "94941",
+        "27607",
+        "27641",
+        "28028",
+        "28026",
+        "27647",
+        "27646",
+        "28027",
+        "27702",
+        "27700"
+      ]
+    },
+    "post_author_team_member_is": {
+      "targetCollection": "team",
+      "isArray": true,
+      "references": [
+        "graham-griffin"
+      ]
+    },
+    "post_editor_team_member_is": {
+      "targetCollection": "team",
+      "isArray": true,
+      "references": [
+        "enri-zhulati"
+      ]
+    },
+    "post_checker_team_member_is": {
+      "targetCollection": "team",
+      "isArray": true,
+      "references": [
+        "ryan-hatch"
+      ]
+    }
+  },
+  "astroSchemaFields": [
+    "title",
+    "draft",
+    "wp_slug",
+    "seo_title",
+    "seo_meta_desc",
+    "cp_hero_heading_line_1",
+    "cp_hero_heading_line_2",
+    "cp_hero_cta_text"
+  ],
+  "missingFromAstro": [
+    "wp_post_id",
+    "pubDate",
+    "updatedDate",
+    "wp_author",
+    "target_keyword",
+    "post_author_team_member_is",
+    "post_editor_team_member_is",
+    "post_checker_team_member_is",
+    "description"
+  ],
+  "missingFromFrontmatter": []
+}

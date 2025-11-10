@@ -1,0 +1,364 @@
+🔍 Starting Component Validation...
+
+Found 49 unique components to validate
+
+
+⏭️  Skipping text pattern: %currentyear%
+
+⏭️  Skipping text pattern: %sep%
+
+⏭️  Skipping text pattern: %sitename%
+
+⏭️  Skipping text pattern: %title%
+
+🔍 Validating: AdvisorPostsTabs
+  ✓ Found: src/components/AdvisorPostsTabs.astro
+  ⚠ No props interface found
+  ✓ Found 2 usage(s)
+  ✅ All usages valid
+
+🔍 Validating: AmigoPhoneNumber
+  ✓ Found: src/components/legacy/wp-shortcodes/AmigoPhoneNumber.astro
+  ✓ Props: 0 required, 1 optional
+  ✓ Found 4 usage(s)
+  ⚠ 4 validation error(s)
+
+🔍 Validating: AvgTexasResidentialRate
+  ✓ Found: src/components/legacy/wp-shortcodes/AvgTexasResidentialRate.astro
+  ⚠ No props interface found
+  ✓ Found 4 usage(s)
+  ⚠ 4 validation error(s)
+
+🔍 Validating: CirroEnergyPhoneNumber
+  ✓ Found: src/components/legacy/wp-shortcodes/CirroEnergyPhoneNumber.astro
+  ✓ Props: 0 required, 1 optional
+  ✓ Found 8 usage(s)
+  ⚠ 8 validation error(s)
+
+🔍 Validating: ComparepowerReviewCount
+  ✓ Found: src/components/legacy/wp-shortcodes/ComparepowerReviewCount.astro
+  ⚠ No props interface found
+  ✓ Found 4 usage(s)
+  ⚠ 4 validation error(s)
+
+🔍 Validating: ConstellationPhoneNumber
+  ✓ Found: src/components/legacy/wp-shortcodes/ConstellationPhoneNumber.astro
+  ✓ Props: 0 required, 1 optional
+  ✓ Found 4 usage(s)
+  ⚠ 4 validation error(s)
+
+🔍 Validating: CurrentYearDirect
+  ✓ Found: src/components/dynamic/CurrentYearDirect.astro
+  ✓ Props: 0 required, 2 optional
+  ✓ Found 2 usage(s)
+  ✅ All usages valid
+
+🔍 Validating: DirectEnergyPhoneNumber
+  ✓ Found: src/components/legacy/wp-shortcodes/DirectEnergyPhoneNumber.astro
+  ✓ Props: 0 required, 1 optional
+  ✓ Found 8 usage(s)
+  ⚠ 8 validation error(s)
+
+🔍 Validating: DiscountPowerPhoneNumber
+  ✓ Found: src/components/legacy/wp-shortcodes/DiscountPowerPhoneNumber.astro
+  ✓ Props: 0 required, 1 optional
+  ✓ Found 4 usage(s)
+  ⚠ 4 validation error(s)
+
+🔍 Validating: FaqRankMath
+  ✓ Found: src/components/legacy/wp-kadence-rm/FaqRankMath.astro
+  ✓ Props: 1 required, 2 optional
+  ✓ Found 30 usage(s)
+  ⚠ 368 validation error(s)
+
+🔍 Validating: FlagshipPhoneNumber
+  ✓ Found: src/components/legacy/wp-shortcodes/FlagshipPhoneNumber.astro
+  ✓ Props: 0 required, 1 optional
+  ✓ Found 4 usage(s)
+  ⚠ 4 validation error(s)
+
+🔍 Validating: FourChangePhoneNumber
+  ✓ Found: src/components/legacy/wp-shortcodes/FourChangePhoneNumber.astro
+  ✓ Props: 0 required, 1 optional
+  ✓ Found 8 usage(s)
+  ⚠ 8 validation error(s)
+
+🔍 Validating: FrontierPhoneNumber
+  ✓ Found: src/components/legacy/wp-shortcodes/FrontierPhoneNumber.astro
+  ✓ Props: 0 required, 1 optional
+  ✓ Found 12 usage(s)
+  ⚠ 16 validation error(s)
+
+🔍 Validating: FrontierPhoneNumberLinkRc
+  ✓ Found: src/components/legacy/wp-shortcodes/FrontierPhoneNumberLinkRc.astro
+  ✓ Props: 0 required, 1 optional
+  ✓ Found 4 usage(s)
+  ⚠ 4 validation error(s)
+
+🔍 Validating: GexaPhoneNumber
+  ✓ Found: src/components/legacy/wp-shortcodes/GexaPhoneNumber.astro
+  ✓ Props: 0 required, 1 optional
+  ✓ Found 4 usage(s)
+  ⚠ 4 validation error(s)
+
+🔍 Validating: GreenMountainPhoneNumber
+  ✓ Found: src/components/legacy/wp-shortcodes/GreenMountainPhoneNumber.astro
+  ✓ Props: 0 required, 1 optional
+  ✓ Found 4 usage(s)
+  ⚠ 4 validation error(s)
+
+🔍 Validating: HelpMeChoose
+  ✓ Found: src/components/legacy/wp-shortcodes/HelpMeChoose.astro
+  ✓ Props: 0 required, 3 optional
+  ✓ Found 2 usage(s)
+  ✅ All usages valid
+
+🔍 Validating: JustPhoneNumber
+  ✓ Found: src/components/legacy/wp-shortcodes/JustPhoneNumber.astro
+  ✓ Props: 0 required, 1 optional
+  ✓ Found 4 usage(s)
+  ⚠ 4 validation error(s)
+
+🔍 Validating: LowestRateDisplay
+  ✓ Found: src/components/legacy/wp-shortcodes/LowestRateDisplay.astro
+  ✓ Props: 1 required, 4 optional
+  ✓ Found 100 usage(s)
+  ✅ All usages valid
+
+🔍 Validating: NewPowerPhoneNumber
+  ✓ Found: src/components/legacy/wp-shortcodes/NewPowerPhoneNumber.astro
+  ✓ Props: 0 required, 1 optional
+  ✓ Found 4 usage(s)
+  ⚠ 4 validation error(s)
+
+🔍 Validating: PaylessPowerPhoneNumber
+  ✓ Found: src/components/legacy/wp-shortcodes/PaylessPowerPhoneNumber.astro
+  ✓ Props: 0 required, 1 optional
+  ✓ Found 4 usage(s)
+  ⚠ 4 validation error(s)
+
+🔍 Validating: PopularCitiesList
+  ✓ Found: src/components/legacy/wp-shortcodes/PopularCitiesList.astro
+  ✓ Props: 0 required, 2 optional
+  ✓ Found 124 usage(s)
+  ✅ All usages valid
+
+🔍 Validating: PopularZipcodes
+  ✓ Found: src/components/legacy/wp-shortcodes/PopularZipcodes.astro
+  ✓ Props: 1 required, 3 optional
+  ✓ Found 128 usage(s)
+  ✅ All usages valid
+
+🔍 Validating: ProviderCard
+  ✓ Found: src/components/ProviderCard.astro
+  ✓ Props: 3 required, 1 optional
+  ✓ Found 74 usage(s)
+  ✅ All usages valid
+
+🔍 Validating: ProvidersPhoneTable
+  ✓ Found: src/components/legacy/wp-shortcodes/ProvidersPhoneTable.astro
+  ✓ Props: 1 required, 1 optional
+  ✓ Found 178 usage(s)
+  ✅ All usages valid
+
+🔍 Validating: PulsePowerPhoneNumber
+  ✓ Found: src/components/legacy/wp-shortcodes/PulsePowerPhoneNumber.astro
+  ✓ Props: 0 required, 1 optional
+  ✓ Found 4 usage(s)
+  ⚠ 4 validation error(s)
+
+🔍 Validating: RatesTable
+  ✓ Found: src/components/legacy/wp-shortcodes/RatesTable.astro
+  ✓ Props: 0 required, 16 optional
+  ✓ Found 384 usage(s)
+  ⚠ 384 validation error(s)
+
+🔍 Validating: ReliantPhoneNumber
+  ✓ Found: src/components/legacy/wp-shortcodes/ReliantPhoneNumber.astro
+  ✓ Props: 0 required, 1 optional
+  ✓ Found 6 usage(s)
+  ⚠ 6 validation error(s)
+
+🔍 Validating: RhythmEnergyPhone
+  ✓ Found: src/components/legacy/wp-shortcodes/RhythmEnergyPhone.astro
+  ⚠ No props interface found
+  ✓ Found 4 usage(s)
+  ⚠ 4 validation error(s)
+
+🔍 Validating: TaraEnergyPhoneNumber
+  ✓ Found: src/components/legacy/wp-shortcodes/TaraEnergyPhoneNumber.astro
+  ✓ Props: 0 required, 1 optional
+  ✓ Found 4 usage(s)
+  ⚠ 4 validation error(s)
+
+🔍 Validating: TocRankMath
+  ✓ Found: src/components/legacy/wp-kadence-rm/TocRankMath.astro
+  ✓ Props: 0 required, 6 optional
+  ✓ Found 80 usage(s)
+  ⚠ 1614 validation error(s)
+
+🔍 Validating: TxuPhoneNumber
+  ✓ Found: src/components/legacy/wp-shortcodes/TxuPhoneNumber.astro
+  ✓ Props: 0 required, 1 optional
+  ✓ Found 8 usage(s)
+  ⚠ 8 validation error(s)
+
+🔍 Validating: VcBasicGrid
+  ✓ Found: src/components/legacy/wp-shortcodes/VcBasicGrid.astro
+  ✓ Props: 0 required, 8 optional
+  ✓ Found 2 usage(s)
+  ✅ All usages valid
+
+🔍 Validating: WpBlock59853
+  ❌ Component file not found
+
+🔍 Validating: WpBlock60549
+  ❌ Component file not found
+
+🔍 Validating: WpBlock61154
+  ❌ Component file not found
+
+🔍 Validating: WpBlock61258
+  ❌ Component file not found
+
+🔍 Validating: WpBlock61260
+  ❌ Component file not found
+
+🔍 Validating: WpBlock61277
+  ❌ Component file not found
+
+🔍 Validating: WpBlock75232
+  ❌ Component file not found
+
+🔍 Validating: WpBlock77727
+  ❌ Component file not found
+
+🔍 Validating: WpBlock81492
+  ❌ Component file not found
+
+🔍 Validating: WpBlock84548
+  ❌ Component file not found
+
+🔍 Validating: WpBlock94368
+  ❌ Component file not found
+
+🔍 Validating: ZipcodeSearchbar
+  ✓ Found: src/components/legacy/wp-shortcodes/ZipcodeSearchbar.astro
+  ⚠ No props interface found
+  ✓ Found 914 usage(s)
+  ⚠ 3646 validation error(s)
+
+
+📊 Validation Summary
+
+Total Components: 49
+Components Found: 34
+Components Not Found: 11
+Total Usages: 2130
+Valid Usages: 612
+Invalid Usages: 1518
+Parse Errors: 0
+
+Errors: 39
+Warnings: 6098
+
+📝 Results saved to:
+  - /Users/brad/_CODE_DEV_PROJECTS/cp-cms-payload-cms-mongo/migration/data/component-validation.json
+  - /Users/brad/_CODE_DEV_PROJECTS/cp-cms-payload-cms-mongo/migration/data/component-props.json
+
+
+⚠️  CRITICAL ERRORS FOUND:
+
+FaqRankMath:
+  - Missing required prop: questions
+    File: comparisons/txu-energy-vs-reliant/index.mdx
+  - Missing required prop: questions
+    File: texas-electricity-energy-companies/bkv-energy/index.mdx
+  - Missing required prop: questions
+    File: texas-electricity-energy-companies/chariot-energy/index.mdx
+  - Missing required prop: questions
+    File: texas-electricity-energy-companies/cirro-energy-plans-electricity-rates/index.mdx
+  - Missing required prop: questions
+    File: texas-electricity-energy-companies/direct-energy-plans-electricity-rates/index.mdx
+  - Missing required prop: questions
+    File: texas-electricity-energy-companies/energy-texas/index.mdx
+  - Missing required prop: questions
+    File: texas-electricity-energy-companies/energy-texas/index.mdx
+  - Missing required prop: questions
+    File: texas-electricity-energy-companies/gexa-energy-plans-electricity-rates/index.mdx
+  - Missing required prop: questions
+    File: texas-electricity-energy-companies/good-charlie/index.mdx
+  - Missing required prop: questions
+    File: texas-electricity-energy-companies/green-mountain-energy-plans-electricity-rates/index.mdx
+  - Missing required prop: questions
+    File: texas-electricity-energy-companies/octopus-energy/index.mdx
+  - Missing required prop: questions
+    File: texas-electricity-energy-companies/octopus-energy/index.mdx
+  - Missing required prop: questions
+    File: texas-electricity-energy-companies/octopus-energy/index.mdx
+  - Missing required prop: questions
+    File: texas-electricity-energy-companies/octopus-energy/index.mdx
+  - Missing required prop: questions
+    File: texas-electricity-energy-companies/octopus-energy/index.mdx
+  - Missing required prop: questions
+    File: texas-electricity-energy-companies/ohm-connect/index.mdx
+  - Missing required prop: questions
+    File: texas-electricity-energy-companies/onpoint-energy/index.mdx
+  - Missing required prop: questions
+    File: texas-electricity-energy-companies/payless-power/index.mdx
+  - Missing required prop: questions
+    File: texas-electricity-energy-companies/revolution-energy/index.mdx
+  - Missing required prop: questions
+    File: texas-electricity-energy-companies/shell-energy/index.mdx
+  - Missing required prop: questions
+    File: texas-electricity-energy-companies/tesla-electric/index.mdx
+  - Missing required prop: questions
+    File: texas-electricity-energy-companies/texas-electricity-energy-companies/index.mdx
+  - Missing required prop: questions
+    File: texas-electricity-energy-companies/top-energy-companies/index.mdx
+  - Missing required prop: questions
+    File: texas-electricity-energy-companies/trieagle-energy-plans-electricity-rates/index.mdx
+  - Missing required prop: questions
+    File: texas-electricity-energy-companies/txu-energy-vs-reliant/index.mdx
+  - Missing required prop: questions
+    File: texas-electricity-energy-companies/v247-power/index.mdx
+  - Missing required prop: questions
+    File: texas-electricity-energy-companies/value-power/index.mdx
+  - Missing required prop: questions
+    File: top-energy-companies/index.mdx
+
+WpBlock59853:
+  - Component file not found in /Users/brad/_CODE_DEV_PROJECTS/cp-content-site-astro/src/components
+
+WpBlock60549:
+  - Component file not found in /Users/brad/_CODE_DEV_PROJECTS/cp-content-site-astro/src/components
+
+WpBlock61154:
+  - Component file not found in /Users/brad/_CODE_DEV_PROJECTS/cp-content-site-astro/src/components
+
+WpBlock61258:
+  - Component file not found in /Users/brad/_CODE_DEV_PROJECTS/cp-content-site-astro/src/components
+
+WpBlock61260:
+  - Component file not found in /Users/brad/_CODE_DEV_PROJECTS/cp-content-site-astro/src/components
+
+WpBlock61277:
+  - Component file not found in /Users/brad/_CODE_DEV_PROJECTS/cp-content-site-astro/src/components
+
+WpBlock75232:
+  - Component file not found in /Users/brad/_CODE_DEV_PROJECTS/cp-content-site-astro/src/components
+
+WpBlock77727:
+  - Component file not found in /Users/brad/_CODE_DEV_PROJECTS/cp-content-site-astro/src/components
+
+WpBlock81492:
+  - Component file not found in /Users/brad/_CODE_DEV_PROJECTS/cp-content-site-astro/src/components
+
+WpBlock84548:
+  - Component file not found in /Users/brad/_CODE_DEV_PROJECTS/cp-content-site-astro/src/components
+
+WpBlock94368:
+  - Component file not found in /Users/brad/_CODE_DEV_PROJECTS/cp-content-site-astro/src/components
+
+
+✅ Validation complete!

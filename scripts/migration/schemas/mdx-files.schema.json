@@ -1,0 +1,86 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "MDX Files Catalog",
+  "description": "Schema for MDX file scanner output",
+  "type": "object",
+  "required": ["files", "stats", "scannedAt"],
+  "properties": {
+    "files": {
+      "type": "array",
+      "description": "Array of discovered MDX files",
+      "items": {
+        "type": "object",
+        "required": ["filePath", "relativePath", "collection", "locale", "fileName", "fullFileName"],
+        "properties": {
+          "filePath": {
+            "type": "string",
+            "description": "Absolute path to the .mdx file"
+          },
+          "relativePath": {
+            "type": "string",
+            "description": "Relative path from the data directory"
+          },
+          "collection": {
+            "type": "string",
+            "description": "Collection name"
+          },
+          "locale": {
+            "type": ["string", "null"],
+            "description": "Locale code or null",
+            "pattern": "^[a-z]{2}$"
+          },
+          "fileName": {
+            "type": "string",
+            "description": "File name without extension"
+          },
+          "fullFileName": {
+            "type": "string",
+            "description": "File name with extension",
+            "pattern": "\\.(mdx|mdoc)$"
+          }
+        }
+      }
+    },
+    "stats": {
+      "type": "object",
+      "required": ["totalFiles", "totalDirectories", "executionTimeMs", "collections", "locales"],
+      "properties": {
+        "totalFiles": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total files scanned"
+        },
+        "totalDirectories": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total directories scanned"
+        },
+        "executionTimeMs": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Execution time in milliseconds"
+        },
+        "collections": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Unique collections found"
+        },
+        "locales": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z]{2}$"
+          },
+          "description": "Unique locales found"
+        }
+      }
+    },
+    "scannedAt": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}",
+      "description": "ISO timestamp when scan was performed"
+    }
+  }
+}

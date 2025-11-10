@@ -1,0 +1,236 @@
+[
+  {
+    "name": "Amigo Energy Phone",
+    "slug": "amigo-phone",
+    "category": "phone",
+    "value": "866-993-4445",
+    "userFacingDescription": "Amigo Energy Customer Service",
+    "metadata": {
+      "provider": "amigo-energy",
+      "mdxComponent": "AmigoPhoneNumber"
+    }
+  },
+  {
+    "name": "Cirro Energy Phone",
+    "slug": "cirro-phone",
+    "category": "phone",
+    "value": "866-965-5660",
+    "userFacingDescription": "Cirro Energy Customer Service",
+    "metadata": {
+      "provider": "cirro-energy",
+      "mdxComponent": "CirroEnergyPhoneNumber"
+    }
+  },
+  {
+    "name": "Constellation Phone",
+    "slug": "constellation-phone",
+    "category": "phone",
+    "value": "855-798-2889",
+    "userFacingDescription": "Constellation Customer Service",
+    "metadata": {
+      "provider": "constellation",
+      "mdxComponent": "ConstellationPhoneNumber"
+    }
+  },
+  {
+    "name": "Direct Energy Phone",
+    "slug": "direct-energy-phone",
+    "category": "phone",
+    "value": "866-285-4447",
+    "userFacingDescription": "Direct Energy Customer Service",
+    "metadata": {
+      "provider": "direct-energy",
+      "mdxComponent": "DirectEnergyPhoneNumber"
+    }
+  },
+  {
+    "name": "Discount Power Phone",
+    "slug": "discount-power-phone",
+    "category": "phone",
+    "value": "866-996-1740",
+    "userFacingDescription": "Discount Power Customer Service",
+    "metadata": {
+      "provider": "discount-power",
+      "mdxComponent": "DiscountPowerPhoneNumber"
+    }
+  },
+  {
+    "name": "Flagship Power Phone",
+    "slug": "flagship-phone",
+    "category": "phone",
+    "value": "866-747-7111",
+    "userFacingDescription": "Flagship Power Customer Service",
+    "metadata": {
+      "provider": "flagship-power",
+      "mdxComponent": "FlagshipPhoneNumber"
+    }
+  },
+  {
+    "name": "4Change Energy Phone",
+    "slug": "4change-phone",
+    "category": "phone",
+    "value": "888-250-2215",
+    "userFacingDescription": "4Change Energy Customer Service",
+    "metadata": {
+      "provider": "4change-energy",
+      "mdxComponent": "FourChangePhoneNumber"
+    }
+  },
+  {
+    "name": "Frontier Utilities Phone",
+    "slug": "frontier-phone",
+    "category": "phone",
+    "value": "866-280-3131",
+    "userFacingDescription": "Frontier Utilities Customer Service",
+    "metadata": {
+      "provider": "frontier-utilities",
+      "mdxComponent": "FrontierPhoneNumber"
+    }
+  },
+  {
+    "name": "Frontier Utilities Phone (RC Link)",
+    "slug": "frontier-phone-rc",
+    "category": "phone",
+    "value": "281-640-2117",
+    "userFacingDescription": "Frontier Utilities (RC Link)",
+    "metadata": {
+      "provider": "frontier-utilities",
+      "mdxComponent": "FrontierPhoneNumberLinkRc"
+    }
+  },
+  {
+    "name": "Gexa Energy Phone",
+    "slug": "gexa-phone",
+    "category": "phone",
+    "value": "888-688-8460",
+    "userFacingDescription": "Gexa Energy Customer Service",
+    "metadata": {
+      "provider": "gexa-energy",
+      "mdxComponent": "GexaPhoneNumber"
+    }
+  },
+  {
+    "name": "Green Mountain Energy Phone",
+    "slug": "green-mountain-phone",
+    "category": "phone",
+    "value": "866-983-4770",
+    "userFacingDescription": "Green Mountain Energy Customer Service",
+    "metadata": {
+      "provider": "green-mountain-energy",
+      "mdxComponent": "GreenMountainPhoneNumber"
+    }
+  },
+  {
+    "name": "Just Energy Phone",
+    "slug": "just-phone",
+    "category": "phone",
+    "value": "866-985-2820",
+    "userFacingDescription": "Just Energy Customer Service",
+    "metadata": {
+      "provider": "just-energy",
+      "mdxComponent": "JustPhoneNumber"
+    }
+  },
+  {
+    "name": "New Power Texas Phone",
+    "slug": "new-power-phone",
+    "category": "phone",
+    "value": "888-316-0697",
+    "userFacingDescription": "New Power Texas Customer Service",
+    "metadata": {
+      "provider": "new-power-texas",
+      "mdxComponent": "NewPowerPhoneNumber"
+    }
+  },
+  {
+    "name": "Payless Power Phone",
+    "slug": "payless-power-phone",
+    "category": "phone",
+    "value": "855-854-8490",
+    "userFacingDescription": "Payless Power Customer Service",
+    "metadata": {
+      "provider": "payless-power",
+      "mdxComponent": "PaylessPowerPhoneNumber"
+    }
+  },
+  {
+    "name": "Pulse Power Phone",
+    "slug": "pulse-power-phone",
+    "category": "phone",
+    "value": "888-853-4522",
+    "userFacingDescription": "Pulse Power Customer Service",
+    "metadata": {
+      "provider": "pulse-power",
+      "mdxComponent": "PulsePowerPhoneNumber"
+    }
+  },
+  {
+    "name": "Reliant Energy Phone",
+    "slug": "reliant-phone",
+    "category": "phone",
+    "value": "866-983-4620",
+    "userFacingDescription": "Reliant Energy Customer Service",
+    "metadata": {
+      "provider": "reliant-energy",
+      "mdxComponent": "ReliantPhoneNumber"
+    }
+  },
+  {
+    "name": "Rhythm Energy Phone",
+    "slug": "rhythm-phone",
+    "category": "phone",
+    "value": "877-825-9940",
+    "userFacingDescription": "Rhythm Energy Customer Service",
+    "metadata": {
+      "provider": "rhythm-energy",
+      "mdxComponent": "RhythmEnergyPhone"
+    }
+  },
+  {
+    "name": "Tara Energy Phone",
+    "slug": "tara-phone",
+    "category": "phone",
+    "value": "866-217-5179",
+    "userFacingDescription": "Tara Energy Customer Service",
+    "metadata": {
+      "provider": "tara-energy",
+      "mdxComponent": "TaraEnergyPhoneNumber"
+    }
+  },
+  {
+    "name": "TXU Energy Phone",
+    "slug": "txu-phone",
+    "category": "phone",
+    "value": "866-370-2440",
+    "userFacingDescription": "TXU Energy Customer Service",
+    "metadata": {
+      "provider": "txu-energy",
+      "mdxComponent": "TxuPhoneNumber"
+    }
+  },
+  {
+    "name": "Average TX Residential Rate",
+    "slug": "avg-tx-residential-rate",
+    "category": "other",
+    "value": "14.2",
+    "userFacingDescription": "Current average Texas residential electricity rate",
+    "metadata": {
+      "type": "dynamic-rate",
+      "unit": "cents per kWh",
+      "source": "API",
+      "mdxComponent": "AvgTexasResidentialRate"
+    }
+  },
+  {
+    "name": "ComparePower Review Count",
+    "slug": "comparepower-review-count",
+    "category": "other",
+    "value": "75,396",
+    "userFacingDescription": "Number of 5-star reviews on ShopperApproved",
+    "metadata": {
+      "type": "review-count",
+      "source": "ShopperApproved API",
+      "mdxComponent": "ComparepowerReviewCount"
+    }
+  }
+]

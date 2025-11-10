@@ -1,0 +1,152 @@
+{
+  "slug": "providers",
+  "admin": {
+    "useAsTitle": "title"
+  },
+  "fields": [
+    {
+      "name": "title",
+      "type": "text",
+      "required": true,
+      "admin": {
+        "description": "Found in 157/157 files"
+      }
+    },
+    {
+      "name": "wp_slug",
+      "type": "text",
+      "required": false,
+      "admin": {
+        "description": "Found in 156/157 files"
+      }
+    },
+    {
+      "name": "wp_post_id",
+      "type": "relationship",
+      "required": false,
+      "admin": {
+        "description": "Found in 156/157 files"
+      },
+      "relationTo": "unknown",
+      "hasMany": false
+    },
+    {
+      "name": "seo_meta_desc",
+      "type": "textarea",
+      "required": false,
+      "admin": {
+        "description": "Found in 154/157 files"
+      }
+    },
+    {
+      "name": "draft",
+      "type": "checkbox",
+      "required": true,
+      "admin": {
+        "description": "Found in 157/157 files"
+      }
+    },
+    {
+      "name": "pubDate",
+      "type": "text",
+      "required": true,
+      "admin": {
+        "description": "Found in 157/157 files"
+      }
+    },
+    {
+      "name": "updatedDate",
+      "type": "date",
+      "required": false,
+      "admin": {
+        "description": "Found in 156/157 files"
+      }
+    },
+    {
+      "name": "wp_author",
+      "type": "text",
+      "required": false,
+      "admin": {
+        "description": "Found in 156/157 files"
+      }
+    },
+    {
+      "name": "cp_hero_heading_line_1",
+      "type": "text",
+      "required": false,
+      "admin": {
+        "description": "Found in 156/157 files"
+      }
+    },
+    {
+      "name": "cp_hero_heading_line_2",
+      "type": "text",
+      "required": false,
+      "admin": {
+        "description": "Found in 155/157 files"
+      }
+    },
+    {
+      "name": "cp_hero_cta_text",
+      "type": "text",
+      "required": false,
+      "admin": {
+        "description": "Found in 155/157 files"
+      }
+    },
+    {
+      "name": "seo_title",
+      "type": "text",
+      "required": false,
+      "admin": {
+        "description": "Found in 129/157 files"
+      }
+    },
+    {
+      "name": "target_keyword",
+      "type": "text",
+      "required": false,
+      "admin": {
+        "description": "Found in 93/157 files"
+      }
+    },
+    {
+      "name": "post_author_team_member_is",
+      "type": "relationship",
+      "required": false,
+      "admin": {
+        "description": "Found in 1/157 files"
+      },
+      "relationTo": "team",
+      "hasMany": true
+    },
+    {
+      "name": "post_editor_team_member_is",
+      "type": "relationship",
+      "required": false,
+      "admin": {
+        "description": "Found in 1/157 files"
+      },
+      "relationTo": "team",
+      "hasMany": true
+    },
+    {
+      "name": "post_checker_team_member_is",
+      "type": "relationship",
+      "required": false,
+      "admin": {
+        "description": "Found in 1/157 files"
+      },
+      "relationTo": "team",
+      "hasMany": true
+    },
+    {
+      "name": "description",
+      "type": "text",
+      "required": false,
+      "admin": {
+        "description": "Found in 1/157 files"
+      }
+    }
+  ]
+}

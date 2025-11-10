@@ -1,0 +1,211 @@
+{
+  "timestamp": "2025-10-26T18:15:05.010Z",
+  "files": {
+    "original": "migration/round-trip-testing/abilene-original.mdx",
+    "exported": "migration/round-trip-testing/abilene-exported.mdx"
+  },
+  "frontmatter": {
+    "totalFields": 15,
+    "matchingFields": 15,
+    "missingInExport": [],
+    "extraInExport": [],
+    "differentValues": [],
+    "allFieldsMatch": true
+  },
+  "components": {
+    "totalOriginal": 21,
+    "totalExported": 21,
+    "matching": 8,
+    "missingInExport": [],
+    "extraInExport": [],
+    "propMismatches": [
+      {
+        "componentType": "Image",
+        "index": 1,
+        "hasDifferences": true,
+        "missingProps": [],
+        "extraProps": [],
+        "differentValues": [
+          {
+            "prop": "src",
+            "original": "abileneTexas.jpg",
+            "exported": "abilene-texas-6.jpg"
+          }
+        ]
+      },
+      {
+        "componentType": "RatesTable",
+        "index": 2,
+        "hasDifferences": true,
+        "missingProps": [
+          "textRrTable"
+        ],
+        "extraProps": [
+          "priceUnit",
+          "tableMaxWidth",
+          "headingWrapperTag"
+        ],
+        "differentValues": []
+      },
+      {
+        "componentType": "ZipcodeSearchbar",
+        "index": 3,
+        "hasDifferences": true,
+        "missingProps": [],
+        "extraProps": [
+          "buttonText"
+        ],
+        "differentValues": []
+      },
+      {
+        "componentType": "EiaMonth",
+        "index": 5,
+        "hasDifferences": true,
+        "missingProps": [
+          "name"
+        ],
+        "extraProps": [],
+        "differentValues": []
+      },
+      {
+        "componentType": "EiaRatesChart",
+        "index": 8,
+        "hasDifferences": true,
+        "missingProps": [
+          "name"
+        ],
+        "extraProps": [],
+        "differentValues": []
+      },
+      {
+        "componentType": "Image",
+        "index": 9,
+        "hasDifferences": true,
+        "missingProps": [],
+        "extraProps": [],
+        "differentValues": [
+          {
+            "prop": "src",
+            "original": "Energy_Bill_Usage_kWh.jpg",
+            "exported": "energy-bill-usage-kwh-6.jpg"
+          }
+        ]
+      },
+      {
+        "componentType": "ZipcodeSearchbar",
+        "index": 10,
+        "hasDifferences": true,
+        "missingProps": [],
+        "extraProps": [
+          "buttonText"
+        ],
+        "differentValues": []
+      },
+      {
+        "componentType": "ZipcodeSearchbar",
+        "index": 11,
+        "hasDifferences": true,
+        "missingProps": [],
+        "extraProps": [
+          "buttonText"
+        ],
+        "differentValues": []
+      },
+      {
+        "componentType": "Image",
+        "index": 12,
+        "hasDifferences": true,
+        "missingProps": [],
+        "extraProps": [],
+        "differentValues": [
+          {
+            "prop": "src",
+            "original": "Electricity_Rates_Switch_Save.jpg",
+            "exported": "electricity-rates-switch-save-6.jpg"
+          }
+        ]
+      },
+      {
+        "componentType": "ZipcodeSearchbar",
+        "index": 13,
+        "hasDifferences": true,
+        "missingProps": [],
+        "extraProps": [
+          "buttonText"
+        ],
+        "differentValues": []
+      },
+      {
+        "componentType": "ZipcodeSearchbar",
+        "index": 15,
+        "hasDifferences": true,
+        "missingProps": [],
+        "extraProps": [
+          "buttonText"
+        ],
+        "differentValues": []
+      },
+      {
+        "componentType": "Image",
+        "index": 16,
+        "hasDifferences": true,
+        "missingProps": [],
+        "extraProps": [],
+        "differentValues": [
+          {
+            "prop": "src",
+            "original": "Business_Electricity.jpg",
+            "exported": "business-electricity-6.jpg"
+          }
+        ]
+      },
+      {
+        "componentType": "ZipcodeSearchbar",
+        "index": 17,
+        "hasDifferences": true,
+        "missingProps": [],
+        "extraProps": [
+          "buttonText"
+        ],
+        "differentValues": []
+      }
+    ],
+    "orderMatches": true
+  },
+  "sections": {
+    "originalCount": 7,
+    "exportedCount": 0,
+    "note": "Section wrappers are not preserved in export (intentional)",
+    "originalSections": [
+      {
+        "id": "energy-rates"
+      },
+      {
+        "id": "how-to"
+      },
+      {
+        "id": "moving"
+      },
+      {
+        "id": "switching"
+      },
+      {
+        "id": "companies"
+      },
+      {
+        "id": "no-deposit"
+      },
+      {
+        "id": "business"
+      }
+    ]
+  },
+  "summary": {
+    "frontmatterMatch": true,
+    "componentsMatch": false,
+    "overallMatch": false,
+    "frontmatterScore": "15/15",
+    "componentScore": "8/21",
+    "sectionsPreserved": false
+  }
+}

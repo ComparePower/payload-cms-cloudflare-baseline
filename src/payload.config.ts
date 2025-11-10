@@ -14,13 +14,16 @@ import { Media } from './collections/Media'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
-const cloudflareRemoteBindings = process.env.NODE_ENV === 'production'
+const cloudflareRemoteBindings =
+  process.env.NODE_ENV === 'production' || process.env.REMOTE_BINDINGS === 'true'
 const cloudflare =
   process.argv.find((value) => value.match(/^(generate|migrate):?/)) || !cloudflareRemoteBindings
     ? await getCloudflareContextFromWrangler()
     : await getCloudflareContext({ async: true })
 
 export default buildConfig({
+  // Custom domain for Payload admin panel
+  serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || 'https://payload.comparepower.com',
   admin: {
     user: Users.slug,
     importMap: {
@@ -41,6 +44,10 @@ export default buildConfig({
     r2Storage({
       bucket: cloudflare.env.R2,
       collections: { media: true },
+      config: {
+        // Use custom domain for public image URLs
+        publicUrl: process.env.R2_PUBLIC_URL || 'https://r2.payload.comparepower.com',
+      },
     }),
   ],
 })
@@ -51,7 +58,7 @@ function getCloudflareContextFromWrangler(): Promise<CloudflareContext> {
     ({ getPlatformProxy }) =>
       getPlatformProxy({
         environment: process.env.CLOUDFLARE_ENV,
-        experimental: { remoteBindings: cloudflareRemoteBindings },
+        remoteBindings: cloudflareRemoteBindings,
       } satisfies GetPlatformProxyOptions),
   )
 }

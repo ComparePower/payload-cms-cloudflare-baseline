@@ -1,0 +1,159 @@
+/**
+ * MDX Parser with Frontmatter Extraction
+ *
+ * Task: T007
+ *
+ * Parses MDX files to extract YAML frontmatter and content body.
+ * Uses gray-matter for reliable frontmatter parsing.
+ */
+
+import matter from 'gray-matter'
+import { readFile } from 'fs/promises'
+
+export interface ParsedMdxFile {
+  /** Parsed frontmatter data */
+  frontmatter: Record<string, any>
+  /** MDX content body (without frontmatter) */
+  content: string
+  /** Original file path */
+  filePath: string
+  /** Any parsing errors */
+  errors: string[]
+}
+
+/**
+ * Parse MDX file and extract frontmatter + content
+ *
+ * @param filePath - Absolute path to MDX file
+ * @returns Parsed frontmatter and content
+ *
+ * @example
+ * const result = await parseMdxFile('/path/to/provider.mdx')
+ * console.log(result.frontmatter.title) // "4Change Energy"
+ * console.log(result.content) // "## About\n\n4Change Energy is..."
+ */
+export async function parseMdxFile(filePath: string): Promise<ParsedMdxFile> {
+  const errors: string[] = []
+
+  try {
+    // Read file contents
+    const fileContents = await readFile(filePath, 'utf-8')
+
+    // Parse with gray-matter
+    const { data, content } = matter(fileContents)
+
+    return {
+      frontmatter: data,
+      content: content.trim(),
+      filePath,
+      errors
+    }
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error)
+    errors.push(errorMessage)
+
+    return {
+      frontmatter: {},
+      content: '',
+      filePath,
+      errors
+    }
+  }
+}
+
+/**
+ * Parse MDX content string (without reading from file)
+ *
+ * @param content - MDX content string with frontmatter
+ * @param filePath - Optional file path for reference
+ * @returns Parsed frontmatter and content
+ *
+ * @example
+ * const mdx = `---
+ * title: "My Post"
+ * draft: false
+ * ---
+ *
+ * # Content here
+ * `
+ * const result = parseMdxContent(mdx)
+ */
+export function parseMdxContent(
+  content: string,
+  filePath: string = 'unknown'
+): ParsedMdxFile {
+  const errors: string[] = []
+
+  try {
+    const { data, content: body } = matter(content)
+
+    return {
+      frontmatter: data,
+      content: body.trim(),
+      filePath,
+      errors
+    }
+  } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : String(error)
+    errors.push(errorMessage)
+
+    return {
+      frontmatter: {},
+      content: '',
+      filePath,
+      errors
+    }
+  }
+}
+
+/**
+ * Validate frontmatter has required fields
+ *
+ * @param frontmatter - Parsed frontmatter object
+ * @param requiredFields - Array of required field names
+ * @returns Array of missing field names (empty if all present)
+ *
+ * @example
+ * const missing = validateFrontmatter(frontmatter, ['title', 'slug', 'pubDate'])
+ * if (missing.length > 0) {
+ *   console.error(`Missing fields: ${missing.join(', ')}`)
+ * }
+ */
+export function validateFrontmatter(
+  frontmatter: Record<string, any>,
+  requiredFields: string[]
+): string[] {
+  return requiredFields.filter(field => !(field in frontmatter))
+}
+
+/**
+ * Extract excerpt from content (first N characters)
+ *
+ * @param content - MDX content body
+ * @param length - Maximum excerpt length (default 200)
+ * @returns Excerpt text
+ */
+export function extractExcerpt(content: string, length: number = 200): string {
+  // Remove markdown formatting for cleaner excerpt
+  const plainText = content
+    .replace(/^#+\s+/gm, '') // Remove headings
+    .replace(/\*\*([^*]+)\*\*/g, '$1') // Remove bold
+    .replace(/\*([^*]+)\*/g, '$1') // Remove italic
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // Remove links
+    .replace(/<[^>]+>/g, '') // Remove components/HTML
+    .trim()
+
+  if (plainText.length <= length) {
+    return plainText
+  }
+
+  // Find last word boundary before length limit
+  const truncated = plainText.slice(0, length)
+  const lastSpace = truncated.lastIndexOf(' ')
+
+  if (lastSpace > 0) {
+    return truncated.slice(0, lastSpace) + '...'
+  }
+
+  return truncated + '...'
+}

@@ -1,0 +1,415 @@
+{
+  "AdvisorPostsTabs": {
+    "required": [],
+    "optional": [],
+    "types": {},
+    "raw": null
+  },
+  "AmigoPhoneNumber": {
+    "required": [],
+    "optional": [
+      "providerName"
+    ],
+    "types": {
+      "providerName": "string;"
+    },
+    "raw": "interface Props interface Props {\n  providerName?: string;\n}"
+  },
+  "AvgTexasResidentialRate": {
+    "required": [],
+    "optional": [],
+    "types": {},
+    "raw": "interface Props interface Props {\n  // Add any props that the shortcode accepts\n  // For example:\n  // buttonText?: string;\n  // prependText?: string;\n  [key: string]: any;\n}"
+  },
+  "CirroEnergyPhoneNumber": {
+    "required": [],
+    "optional": [
+      "providerName"
+    ],
+    "types": {
+      "providerName": "string;"
+    },
+    "raw": "interface Props interface Props {\n  providerName?: string;\n}"
+  },
+  "ComparepowerReviewCount": {
+    "required": [],
+    "optional": [],
+    "types": {},
+    "raw": "interface Props interface Props {\n  // Add any props that the shortcode accepts\n  // For example:\n  // buttonText?: string;\n  // prependText?: string;\n  [key: string]: any;\n}"
+  },
+  "ConstellationPhoneNumber": {
+    "required": [],
+    "optional": [
+      "providerName"
+    ],
+    "types": {
+      "providerName": "string;"
+    },
+    "raw": "interface Props interface Props {\n  providerName?: string;\n}"
+  },
+  "CurrentYearDirect": {
+    "required": [],
+    "optional": [
+      "fallback",
+      "class"
+    ],
+    "types": {
+      "fallback": "string;",
+      "class": "string;"
+    },
+    "raw": "interface Props interface Props {\n  fallback?: string;\n  class?: string;\n}"
+  },
+  "DirectEnergyPhoneNumber": {
+    "required": [],
+    "optional": [
+      "providerName"
+    ],
+    "types": {
+      "providerName": "string;"
+    },
+    "raw": "interface Props interface Props {\n  providerName?: string;\n}"
+  },
+  "DiscountPowerPhoneNumber": {
+    "required": [],
+    "optional": [
+      "providerName"
+    ],
+    "types": {
+      "providerName": "string;"
+    },
+    "raw": "interface Props interface Props {\n  providerName?: string;\n}"
+  },
+  "FaqRankMath": {
+    "required": [
+      "questions"
+    ],
+    "optional": [
+      "titleWrapper",
+      "className"
+    ],
+    "types": {
+      "questions": "FaqItem[];",
+      "titleWrapper": "'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';",
+      "className": "string;"
+    },
+    "raw": "interface Props interface Props {\n  questions: FaqItem[];\n  titleWrapper?: 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';\n  className?: string;\n}"
+  },
+  "FlagshipPhoneNumber": {
+    "required": [],
+    "optional": [
+      "providerName"
+    ],
+    "types": {
+      "providerName": "string;"
+    },
+    "raw": "interface Props interface Props {\n  providerName?: string;\n}"
+  },
+  "FourChangePhoneNumber": {
+    "required": [],
+    "optional": [
+      "providerName"
+    ],
+    "types": {
+      "providerName": "string;"
+    },
+    "raw": "interface Props interface Props {\n\tproviderName?: string;\n}"
+  },
+  "FrontierPhoneNumber": {
+    "required": [],
+    "optional": [
+      "providerName"
+    ],
+    "types": {
+      "providerName": "string;"
+    },
+    "raw": "interface Props interface Props {\n  providerName?: string;\n}"
+  },
+  "FrontierPhoneNumberLinkRc": {
+    "required": [],
+    "optional": [
+      "providerName"
+    ],
+    "types": {
+      "providerName": "string;"
+    },
+    "raw": "interface Props interface Props {\n  providerName?: string;\n}"
+  },
+  "GexaPhoneNumber": {
+    "required": [],
+    "optional": [
+      "providerName"
+    ],
+    "types": {
+      "providerName": "string;"
+    },
+    "raw": "interface Props interface Props {\n  providerName?: string;\n}"
+  },
+  "GreenMountainPhoneNumber": {
+    "required": [],
+    "optional": [
+      "providerName"
+    ],
+    "types": {
+      "providerName": "string;"
+    },
+    "raw": "interface Props interface Props {\n  providerName?: string;\n}"
+  },
+  "HelpMeChoose": {
+    "required": [],
+    "optional": [
+      "step",
+      "kwh",
+      "hideUsageOptions"
+    ],
+    "types": {
+      "step": "string;",
+      "kwh": "string;",
+      "hideUsageOptions": "string;"
+    },
+    "raw": "interface Props interface Props {\n  step?: string;\n  kwh?: string;\n  hideUsageOptions?: string;\n}"
+  },
+  "JustPhoneNumber": {
+    "required": [],
+    "optional": [
+      "providerName"
+    ],
+    "types": {
+      "providerName": "string;"
+    },
+    "raw": "interface Props interface Props {\n  providerName?: string;\n}"
+  },
+  "LowestRateDisplay": {
+    "required": [
+      "utilityId"
+    ],
+    "optional": [
+      "pricingBasedOn",
+      "priceUnit",
+      "withoutCta",
+      "onlyPrice"
+    ],
+    "types": {
+      "utilityId": "string;",
+      "pricingBasedOn": "string;",
+      "priceUnit": "string;",
+      "withoutCta": "string;",
+      "onlyPrice": "string;"
+    },
+    "raw": "interface Props interface Props {\n  utilityId: string;\n  pricingBasedOn?: string;\n  priceUnit?: string;\n  withoutCta?: string;\n  onlyPrice?: string;\n}"
+  },
+  "NewPowerPhoneNumber": {
+    "required": [],
+    "optional": [
+      "providerName"
+    ],
+    "types": {
+      "providerName": "string;"
+    },
+    "raw": "interface Props interface Props {\n  providerName?: string;\n}"
+  },
+  "PaylessPowerPhoneNumber": {
+    "required": [],
+    "optional": [
+      "providerName"
+    ],
+    "types": {
+      "providerName": "string;"
+    },
+    "raw": "interface Props interface Props {\n  providerName?: string;\n}"
+  },
+  "PopularCitiesList": {
+    "required": [],
+    "optional": [
+      "state",
+      "limit"
+    ],
+    "types": {
+      "state": "string;",
+      "limit": "string;"
+    },
+    "raw": "interface Props interface Props {\n  state?: string;\n  limit?: string;\n}"
+  },
+  "PopularZipcodes": {
+    "required": [
+      "state"
+    ],
+    "optional": [
+      "city",
+      "limit",
+      "minimumPopulation"
+    ],
+    "types": {
+      "state": "string;",
+      "city": "string;",
+      "limit": "string;",
+      "minimumPopulation": "string;"
+    },
+    "raw": "interface Props interface Props {\n  state: string;\n  city?: string;\n  limit?: string;\n  minimumPopulation?: string;\n}"
+  },
+  "ProviderCard": {
+    "required": [
+      "providerSlug",
+      "heading",
+      "description"
+    ],
+    "optional": [
+      "ctaText"
+    ],
+    "types": {
+      "providerSlug": "string;",
+      "heading": "string;",
+      "description": "string;",
+      "ctaText": "string;"
+    },
+    "raw": "interface Props interface Props {\n\tproviderSlug: string;\n\theading: string;\n\tdescription: string;\n\tctaText?: string;\n}"
+  },
+  "ProvidersPhoneTable": {
+    "required": [
+      "state"
+    ],
+    "optional": [
+      "city"
+    ],
+    "types": {
+      "state": "string;",
+      "city": "string;"
+    },
+    "raw": "interface Props interface Props {\n  state: string;\n  city?: string;\n}"
+  },
+  "PulsePowerPhoneNumber": {
+    "required": [],
+    "optional": [
+      "providerName"
+    ],
+    "types": {
+      "providerName": "string;"
+    },
+    "raw": "interface Props interface Props {\n  providerName?: string;\n}"
+  },
+  "RatesTable": {
+    "required": [],
+    "optional": [
+      "state",
+      "city",
+      "useCityAsFilter",
+      "showUtility",
+      "showProvider",
+      "provider",
+      "utility",
+      "excludeProviders",
+      "priceUnit",
+      "tableMaxWidth",
+      "linkPlanToPopup",
+      "textAfterTable",
+      "appendTableExtras",
+      "pricingBasedOn",
+      "headingWrapperTag",
+      "zipcode"
+    ],
+    "types": {
+      "state": "string;",
+      "city": "string;",
+      "useCityAsFilter": "string;",
+      "showUtility": "string;",
+      "showProvider": "string;",
+      "provider": "string;",
+      "utility": "string;",
+      "excludeProviders": "string;",
+      "priceUnit": "string;",
+      "tableMaxWidth": "string;",
+      "linkPlanToPopup": "string;",
+      "textAfterTable": "string;",
+      "appendTableExtras": "string;",
+      "pricingBasedOn": "string;",
+      "headingWrapperTag": "string;",
+      "zipcode": "string;"
+    },
+    "raw": "interface Props interface Props {\n  state?: string;\n  city?: string;\n  useCityAsFilter?: string;\n  showUtility?: string;\n  showProvider?: string;\n  provider?: string;\n  utility?: string;\n  excludeProviders?: string;\n  priceUnit?: string;\n  tableMaxWidth?: string;\n  linkPlanToPopup?: string;\n  textAfterTable?: string;\n  appendTableExtras?: string;\n  pricingBasedOn?: string;\n  headingWrapperTag?: string;\n  zipcode?: string;\n}"
+  },
+  "ReliantPhoneNumber": {
+    "required": [],
+    "optional": [
+      "providerName"
+    ],
+    "types": {
+      "providerName": "string;"
+    },
+    "raw": "interface Props interface Props {\n  providerName?: string;\n}"
+  },
+  "RhythmEnergyPhone": {
+    "required": [],
+    "optional": [],
+    "types": {},
+    "raw": "interface Props interface Props {\n  // Add any props that the shortcode accepts\n  // For example:\n  // buttonText?: string;\n  // prependText?: string;\n  [key: string]: any;\n}"
+  },
+  "TaraEnergyPhoneNumber": {
+    "required": [],
+    "optional": [
+      "providerName"
+    ],
+    "types": {
+      "providerName": "string;"
+    },
+    "raw": "interface Props interface Props {\n  providerName?: string;\n}"
+  },
+  "TocRankMath": {
+    "required": [],
+    "optional": [
+      "headings",
+      "listStyle",
+      "titleWrapper",
+      "title",
+      "className",
+      "excludeHeadings"
+    ],
+    "types": {
+      "headings": "TocHeading[];",
+      "listStyle": "\"ul\" | \"ol\" | \"div\";",
+      "titleWrapper": "\"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"p\";",
+      "title": "string;",
+      "className": "string;",
+      "excludeHeadings": "string[];"
+    },
+    "raw": "interface Props interface Props {\n\theadings?: TocHeading[];\n\tlistStyle?: \"ul\" | \"ol\" | \"div\";\n\ttitleWrapper?: \"h2\" | \"h3\" | \"h4\" | \"h5\" | \"h6\" | \"p\";\n\ttitle?: string;\n\tclassName?: string;\n\texcludeHeadings?: string[];\n}"
+  },
+  "TxuPhoneNumber": {
+    "required": [],
+    "optional": [
+      "providerName"
+    ],
+    "types": {
+      "providerName": "string;"
+    },
+    "raw": "interface Props interface Props {\n  providerName?: string;\n}"
+  },
+  "VcBasicGrid": {
+    "required": [],
+    "optional": [
+      "postType",
+      "elementWidth",
+      "gap",
+      "item",
+      "initialLoadingAnimation",
+      "gridId",
+      "customQuery",
+      "showImage"
+    ],
+    "types": {
+      "postType": "\"custom\";",
+      "elementWidth": "string;",
+      "gap": "string;",
+      "item": "string;",
+      "initialLoadingAnimation": "string;",
+      "gridId": "string;",
+      "customQuery": "string;",
+      "showImage": "string;"
+    },
+    "raw": "interface Props interface Props {\n  postType?: \"custom\";\n  elementWidth?: string;\n  gap?: string;\n  item?: string;\n  initialLoadingAnimation?: string;\n  gridId?: string;\n  customQuery?: string;\n  showImage?: string;\n}"
+  },
+  "ZipcodeSearchbar": {
+    "required": [],
+    "optional": [],
+    "types": {},
+    "raw": "const { \n\tbuttonText = \"\",\n\tprependText = \"\",\n\tprepend_text = \"\",\n\tplaceholder = \"Enter your ZIP code\",\n\tuseAddressSearch = false,\n\tinitialZipcode = \"\",\n } = Astro.props"
+  }
+}

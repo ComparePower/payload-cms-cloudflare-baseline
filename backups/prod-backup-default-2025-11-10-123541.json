@@ -1,0 +1,12 @@
+{
+  "timestamp": "2025-11-10T18:35:44Z",
+  "local_time": "2025-11-10 12:35:44",
+  "environment": "default",
+  "database_name": "payload-cms-cloudflare-baseline",
+  "bucket_name": "payload-cms-cloudflare-baseline",
+  "sql_file": "prod-backup-default-2025-11-10-123541.sql",
+  "file_size": "9.8K",
+  "insert_statements": 28,
+  "wrangler_version": "4.46.0",
+  "backup_reason": "pre-sync-automatic"
+}
