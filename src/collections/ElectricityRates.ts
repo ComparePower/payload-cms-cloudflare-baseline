@@ -1,4 +1,6 @@
 import type { CollectionConfig } from 'payload'
+import { adminOnly } from '@/access/adminOnly'
+import { adminOrPublishedStatus } from '@/access/adminOrPublishedStatus'
 
 export const ElectricityRates: CollectionConfig = {
   slug: 'electricity-rates',
@@ -7,8 +9,13 @@ export const ElectricityRates: CollectionConfig = {
     defaultColumns: ['title', 'cityName', 'status', 'publishedAt'],
   },
   access: {
-    read: () => true,
+    create: adminOnly,
+    delete: adminOnly,
+    read: adminOrPublishedStatus,
+    update: adminOnly,
   },
+  // Enable soft-delete trash feature
+  trash: true,
   versions: {
     drafts: true,
   },
